@@ -1,0 +1,105 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import ${vo};
+import ${ro};
+import ${qo};
+import ${converter};
+import ${converterUtil};
+import ${objectUtils};
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import org.springframework.stereotype.Service;
+import java.util.*;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+## 主键类型判断
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+## 主键类型
+        #set($idType=${field.propertyType})
+## 主键名称
+        #set($idName=${field.propertyName})
+## 跳出
+        #break
+    #end
+#end
+    @Override
+    public boolean create(${entity}RO ro){
+        return super.save(ConverterUtil.changeRO(${entity}Converter.class, ro));
+    }
+
+    @Override
+    public boolean delete(${idType} ${idName}){
+        return super.removeById(${idName});
+    }
+
+    @Override
+    public boolean update(${entity}RO ro){
+        return super.updateById(ConverterUtil.changeRO(${entity}Converter.class, ro));
+    }
+
+    @Override
+    public ${entity}VO getById(${idType} ${idName}){
+
+        return ConverterUtil.toVO(${entity}Converter.class, super.getById(${idName}));
+    }
+
+    @Override
+    public List<${entity}VO> findList(${entity}QO qo){
+        return ConverterUtil.toVO(${entity}Converter.class, super.list(getQueryWrapper(qo)));
+    }
+
+    @Override
+    public List<${entity}VO> findPage(${entity}QO qo){
+        Page<${entity}> page = super.page(new Page(qo.getPageNum(), qo.getPageSize()), getQueryWrapper(qo));
+        return ConverterUtil.toVO(${entity}Converter.class, page.getRecords());
+    }
+
+    public LambdaQueryWrapper<${entity}> getQueryWrapper(${entity}QO qo){
+        return Wrappers.<${entity}>lambdaQuery()
+## 循环字段
+#foreach($field in ${table.fields})
+## 过滤逻辑删除字段
+    #if(${field.logicDeleteField} || ${field.versionField})
+## 不判断自动填充字段
+    #elseif($field.propertyName.indexOf('createTime') !=-1 || $field.propertyName.indexOf('updateTime') !=-1)
+## boolean字段类型判断
+    #elseif(${field.propertyType} == 'Boolean')
+        #set($convert = $field.propertyName)
+        #set($name=$convert.substring(0,1).toUpperCase() + ${convert.substring(1)})
+            .eq(ObjectUtils.isNotEmpty(qo.get${name}()), ${entity}::get${name}, qo.get${name}() ? 1 : 0)
+    #else
+        #set($convert = $field.propertyName)
+        #set($name=$convert.substring(0,1).toUpperCase() + ${convert.substring(1)})
+            .eq(ObjectUtils.isNotEmpty(qo.get${name}()), ${entity}::get${name}, qo.get${name}())
+    #end
+    #if(!$foreach.hasNext)
+        ;
+    #end
+#end
+    }
+}
+#end
+## function: 使第一个字符大写
+#macro(convert $string)
+    #set($name=$string.substring(0,1).toUpperCase() + ${string.substring(1)})
+#end

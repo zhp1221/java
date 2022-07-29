@@ -1,0 +1,45 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import ${vo};
+import ${ro};
+import ${qo};
+import java.util.*;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+## 主键类型判断
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+## 主键类型
+        #set($idType=${field.propertyType})
+## 主键名称
+        #set($idName=${field.propertyName})
+## 跳出
+        #break
+    #end
+#end
+    boolean create(${entity}RO ro);
+
+    boolean delete(${idType} ${idName});
+
+    boolean update(${entity}RO ro);
+
+    ${entity}VO getById(${idType} ${idName});
+
+    List<${entity}VO> findList(${entity}QO qo);
+
+    List<${entity}VO> findPage(${entity}QO qo);
+}
+#end

@@ -1,0 +1,61 @@
+package ${package.Other}.uro;
+
+#foreach($pkg in ${table.importPackages})
+## 判断date包导入
+    #if($pkg == "java.util.Date")
+import ${pkg};
+    #end
+#end
+#if(${swagger})
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+#end
+#if(${entityLombokModel})
+import lombok.*;
+#if(${chainModel})
+import lombok.experimental.Accessors;
+#end
+#end
+#foreach($field in ${table.fields})
+    #if($field.type.indexOf('decimal') != -1)
+import java.math.BigDecimal;
+    #end
+#end
+
+import ${package.Other}.qo.${entity}QO;
+import ${package.Entity}.${entity};
+
+/**
+* <p>
+* $!{table.comment}RO
+* </p>
+*
+* @author ${author}
+* @since ${date}
+*/
+#if(${entityLombokModel})
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+#if(${chainModel})
+@Accessors(chain = true)
+#end
+#end
+#if(${swagger})
+@ApiModel(value = "${entity}URO对象", description = "批量修改请求对象")
+#end
+public class ${entity}URO {
+#convert(${field.propertyName})
+
+    #set($name=$entity.substring(0,1).toLowerCase() + ${entity.substring(1)})
+    @ApiModelProperty(value = "修改条件")
+    private ${entity}QO ${name}QO;
+
+    @ApiModelProperty(value = "修改的对象")
+    private ${entity} ${name};
+
+}
+## function: 使第一个字符小写
+#macro(convert $string)
+    #set($name=$string.substring(0,1).toLowerCase() + ${string.substring(1)})
+#end

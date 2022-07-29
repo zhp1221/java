@@ -1,0 +1,81 @@
+package ${package.Other}.converter;
+
+import ${package.Entity}.${entity};
+import ${vo};
+import ${ro};
+import ${commonConverter};
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{entity}Converter
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Mapper
+public interface ${entity}Converter extends CommonConverter<${entity}, ${entity}RO, ${entity}VO>{
+
+    /**
+    * <p>
+    *     po 转 vo
+    * </p>
+    *
+    * @return VO类
+    */
+    @Override
+    @Mappings({
+#foreach($field in ${table.fields})
+    #if(${field.versionField} || ${field.logicDeleteField}|| $field.propertyName.indexOf('createTime') !=-1 ||  $field.propertyName.indexOf('updateTime') !=-1)
+    #else
+        @Mapping(source = "${field.propertyName}", target = "${field.propertyName}"),
+    #end
+#end
+    })
+    ${entity}VO toVO(${entity} po);
+
+    /**
+    * <p>
+    *     po集合 转 vo集合
+    * </p>
+    *
+    * @return VO集合
+    */
+    @Override
+    List<${entity}VO> toVO(List<${entity}> poList);
+
+    /**
+    * <p>
+    *     ro 转 po
+    * </p>
+    *
+    * @return PO类
+    */
+    @Override
+    @Mappings({
+#foreach($field in ${table.fields})
+    #if(${field.versionField} || ${field.logicDeleteField}|| $field.propertyName.indexOf('createTime') !=-1 ||  $field.propertyName.indexOf('updateTime') !=-1)
+    #else
+        @Mapping(source = "${field.propertyName}", target = "${field.propertyName}"),
+    #end
+#end
+    })
+    ${entity} changeRO(${entity}RO ro);
+
+    /**
+    * <p>
+    *     ro集合 转 po集合
+    * </p>
+    *
+    * @return PO集合
+    */
+    @Override
+    List<${entity}> changeRO(List<${entity}RO> roList);
+
+}
