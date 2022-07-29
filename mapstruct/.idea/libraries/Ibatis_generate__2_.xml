@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Ibatis_generate (2)">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/resources/libs/Ibatis_generate.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
