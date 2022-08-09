@@ -3,7 +3,6 @@ package com.zhanghp.generate;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.config.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
@@ -15,12 +14,15 @@ import com.zhanghp.common.model.enums.CustomEnum;
 
 import javax.validation.constraints.NotNull;
 import java.io.File;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
- *     代码生成：快速生成
- *     <a href = "https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig">mybatis-plus generator</a>
+ * 代码生成：快速生成
+ * <a href = "https://baomidou.com/pages/981406/#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE-datasourceconfig">mybatis-plus generator</a>
  * </p>
  *
  * @author zhanghp
@@ -31,6 +33,7 @@ public class IbatisGenerate {
     public static void main(String[] args) {
         generate();
     }
+
     /**
      * 代码生成
      */
@@ -47,8 +50,7 @@ public class IbatisGenerate {
                             .author("zhanghp") // 作者名称
                             .dateType(DateType.ONLY_DATE) // 时间策略
                             .commentDate("yyyy-MM-dd") // 注释日期
-//                            .outputDir("C:\\Dpan\\workspace\\study\\Ibatis_generate\\src\\main\\java") // 输出目录
-                            .outputDir("C:\\Dpan\\workspace\\study\\Ibatis_generate\\src\\main\\java") // 输出目录
+                            .outputDir("C:\\Dpan\\workspace\\java\\java\\lab_02_mybatis_plus\\generate\\src\\main\\java") // 输出目录
                             .fileOverride(); // 覆盖已生成文件
 //                            .disableOpenDir(); // 生成后禁止打开所生成的系统目录
                 })
@@ -64,7 +66,7 @@ public class IbatisGenerate {
                             .mapper("dao.mapper") // mapper包名
                             .controller("controller") // controller包名
                             .other("model") // 自定义包名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "C:\\Dpan\\workspace\\study\\Ibatis_generate\\src\\main\\resources\\mappers")); // xml位置
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "C:\\Dpan\\workspace\\java\\java\\lab_02_mybatis_plus\\generate\\src\\main\\resources\\mappers")); // xml位置
                 })
 
                 // 策略配置
@@ -74,7 +76,7 @@ public class IbatisGenerate {
                             .addTableSuffix("_db") // 增加过滤表后缀
                             .addFieldPrefix("t_") // 增加过滤字段前缀
                             .addFieldSuffix("_field") // 增加过滤字段后缀
-                            .addInclude("perm") // 表匹配
+                            .addInclude("label") // 表匹配
 
                             // Entity 策略配置
                             .entityBuilder()
@@ -117,7 +119,7 @@ public class IbatisGenerate {
                 // 注入配置
                 .injectionConfig(builder -> {
 
-                // tag::custom file
+                    // tag::custom file
                     // 自定义vo，ro，qo等数据模型
                     Map<String, String> customFile = new HashMap<>();
                     customFile.put(CustomEnum.VO.getModelSuffix(), CustomEnum.VO.getPath());
@@ -125,12 +127,12 @@ public class IbatisGenerate {
                     customFile.put(CustomEnum.QO.getModelSuffix(), CustomEnum.QO.getPath());
                     // 自定义MapStruct
                     customFile.put(CustomEnum.CONVERTER.getModelSuffix(), CustomEnum.CONVERTER.getPath());
-                // end::custom file
+                    // end::custom file
 
                     builder
                             .customFile(customFile); // 自定义模板
                 })
-                .templateEngine(new EnhanceVelocityTemplaEngine())
+                .templateEngine(new EnhanceVelocityTemplateEngteteine())
                 .execute();
     }
 
@@ -138,7 +140,7 @@ public class IbatisGenerate {
     /**
      * 代码生成器支持自定义[DTO\VO等]模版
      */
-    public final static class EnhanceVelocityTemplaEngine extends VelocityTemplateEngine {
+    public final static class EnhanceVelocityTemplateEngteteine extends VelocityTemplateEngine {
         @Override
         public Map<String, Object> getObjectMap(@NotNull ConfigBuilder config, @NotNull TableInfo tableInfo) {
             // 获取实体类名字
@@ -146,7 +148,7 @@ public class IbatisGenerate {
             // 获取object map
             Map<String, Object> objectMap = super.getObjectMap(config, tableInfo);
             // 获取Other的盘符路径
-            String otherPath = (String)((Map<String, Object>) objectMap.get("package")).get("Other");
+            String otherPath = (String) ((Map<String, Object>) objectMap.get("package")).get("Other");
             // 自定义枚举
             List<String> modelList = CustomEnum.getModel();
             // 循环
@@ -168,6 +170,13 @@ public class IbatisGenerate {
             return objectMap;
         }
 
+        /**
+         * 文件输出路径
+         *
+         * @param customFile 自定义文件map
+         * @param tableInfo  表信息
+         * @param objectMap  对象map
+         */
         @Override
         protected void outputCustomFile(@NotNull Map<String, String> customFile, @NotNull TableInfo tableInfo, @NotNull Map<String, Object> objectMap) {
             // 获取实体类名字
@@ -177,7 +186,7 @@ public class IbatisGenerate {
             // 输出自定义java模板
             customFile.forEach((key, value) -> {
                 // 输出路径
-                String fileName = otherPath + File.separator + key.toLowerCase() + File.separator + entityName + key +".java";
+                String fileName = otherPath + File.separator + key.toLowerCase() + File.separator + entityName + key + ".java";
                 // 输出velocity的java模板
                 this.outputFile(new File(fileName), objectMap, value);
             });

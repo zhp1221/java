@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zhanghp</groupId>
-    <artifactId>Ibatis_generate</artifactId>
+    <artifactId>generate</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
