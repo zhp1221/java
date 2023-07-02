@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhanghp.dao.pojo.Dept">
+    <resultMap id="deptResultMap" type="dept">
+        <!-- 按照有参构造器，依次注入，若参数顺序不一致，可通过构造器调整参数位置，来达到效果-->
+        <constructor>
+            <idArg column="deptno" javaType="Integer"/>
+            <arg column="dname" javaType="String"/>
+            <!-- 通过deptno传参，传入constructorQuery方法，来进行参数-->
+            <arg select="com.zhanghp.dao.mapper.EmpMapper.constructorQuery" javaType="List" column="deptno"/>
+        </constructor>
+        <result property="loc" column="LOC"/>
+    </resultMap>
+    <!-- 查询全部 通过resultMap constructor标签 -->
+    <select id="queryConstructor" resultMap="deptResultMap">
+        select *
+        from dept
+    </select>
+
+    <!-- 一对多查询 -->
+    <resultMap id="oneToMulti" type="dept">
+        <id property="deptno" column="DEPTNO"></id>
+        <result property="dname" column="DNAME"></result>
+        <result property="loc" column="LOC"></result>
+        <collection property="empList" ofType="emp">
+            <id property="empno" column="EMPNO"/>
+            <result property="name" column="ENAME"/>
+            <result property="job" column="JOB"/>
+            <result property="mgr" column="MGR"/>
+            <result property="hiredate" column="HIREDATE"/>
+            <result property="sal" column="SAL"/>
+            <result property="comm" column="COMM"/>
+            <result property="deptno" column="DEPTNO"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryOneToMulti" resultMap="oneToMulti">
+        select *
+        from dept d
+                 left join emp e on (d.DEPTNO = e.DEPTNO)
+    </select>
+
+
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhanghp.dao.pojo.Emp">
+
+    <resultMap id="deptResultMap" type="dept">
+        <id property="deptno" column="DEPTNO"></id>
+        <result property="dname" column="DNAME"></result>
+        <result property="loc" column="LOC"></result>
+    </resultMap>
+
+    <resultMap id="empResultMap" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+    </resultMap>
+
+    <!-- 查询全部 resultType -->
+    <select id="queryResultType" resultType="emp">
+        select *
+        from emp
+    </select>
+
+    <!-- 查询全部 resultMap-->
+    <select id="queryResultMap" resultMap="empResultMap">
+        select *
+        from emp
+    </select>
+
+    <!-- 一对一查询 -->
+    <resultMap id="oneToOne" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+        <association property="deptObject" javaType="dept" resultMap="deptResultMap"/>
+    </resultMap>
+
+    <resultMap id="oneToOne2" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+        <association property="deptObject" javaType="dept" column="DEPTNO"
+                     select="com.zhanghp.dao.mapper.DeptMapper.queryByDeptno"/>
+    </resultMap>
+
+    <resultMap id="oneToOne3" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+        <association property="deptObject" javaType="dept" column="DEPTNO" select="queryDeptByDeptno"/>
+    </resultMap>
+
+    <select id="queryDeptByDeptno" resultMap="deptResultMap">
+        select *
+        from dept
+        where DEPTNO = #{deptno}
+    </select>
+
+    <select id="queryAssociation" resultMap="oneToOne">
+        select *
+        from emp e
+                 left join dept d on (e.DEPTNO = d.DEPTNO)
+    </select>
+
+    <select id="queryAssociation2" resultMap="oneToOne2">
+        select *
+        from emp
+    </select>
+
+    <select id="queryAssociation3" resultMap="oneToOne3">
+        select *
+        from emp
+    </select>
+
+    <!--  调用存储过程  -->
+    <select id="callProcedure" resultMap="oneToOne" statementType="CALLABLE">
+        {call getEmpAndDept(#{dept,jdbcType=INTEGER,mode=IN})}
+    </select>
+
+
+</mapper>

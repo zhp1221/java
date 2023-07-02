@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 写Mapper接口的全路径包名 -->
+<mapper namespace="com.zhanghp.dao.mapper.DemoMapper">
+
+    <!-- 查询全部数据记录 -->
+    <select id="queryAll" resultType="demo">
+        select *
+        from demo
+    </select>
+
+    <!-- 通过对象传参，新增记录 -->
+    <insert id="insertOneByDemo" parameterType="demo" useGeneratedKeys="true" keyProperty="id">
+        insert into demo
+        values (#{demo.id}, #{demo.name}, #{demo.age})
+    </insert>
+
+    <!-- 通过对象传参，更新记录 -->
+    <update id="updateOneByDemo" parameterType="demo">
+        update demo
+        set name =#{demo.name},
+            age  = #{demo.age}
+        where id = #{demo.id}
+    </update>
+
+    <!-- 通过主键id删除一条记录 -->
+    <delete id="deleteOneById" parameterType="int">
+        delete
+        from demo
+        where id = #{id}
+    </delete>
+
+    <select id="selectBySingleType" parameterType="string" resultType="demo">
+        select *
+        from demo
+        where name = #{name}
+    </select>
+
+    <select id="selectByMultiType" resultType="demo">
+        select *
+        from demo
+        where name = #{name}
+          and age = #{age}
+    </select>
+
+    <select id="selectByBean" parameterType="demo" resultType="demo">
+        select *
+        from demo
+        where name = #{demo.name}
+          and age = #{demo.age}
+    </select>
+
+    <select id="selectByMultiBean" resultType="demo">
+        select *
+        from demo
+        where name = #{demo01.name}
+          and age = #{demo02.age}
+    </select>
+
+    <select id="selectByMap" parameterType="map" resultType="demo">
+        select *
+        from demo
+        where name = #{map.name}
+          and age = #{map.age}
+    </select>
+
+    <select id="fuzzyQuery" parameterType="string" resultType="demo">
+        select *
+        from demo
+        where name like concat('%', #{name}, '%')
+    </select>
+
+    <!-- ================动态sql 我是分界线======================= -->
+
+    <select id="dynamicIf" parameterType="string" resultType="demo">
+        select * from demo
+        where 1=1
+        <if test="name != null and name != ''">
+            and name = #{name}
+        </if>
+    </select>
+
+    <select id="dynamicIfByDemo" parameterType="demo" resultType="demo">
+        select * from demo
+        where 1=1
+        <if test="demo != null and demo.name != null and demo.name != ''">
+            and name = #{demo.name}
+        </if>
+    </select>
+
+    <select id="dynamicIfFuzzy" parameterType="string" resultType="demo">
+        select * from demo
+        where 1=1
+        <if test="name != null">
+            and name like concat('%', #{name}, '%')
+        </if>
+    </select>
+
+    <select id="dynamicChooseWhenAndOtherwise" resultType="demo">
+        select * from demo where 1=1
+        <choose>
+            <when test="demo != null and demo.age != null">
+                and age = #{demo.age}
+            </when>
+            <when test="name != null and name != ''">
+                and name = #{name}
+            </when>
+            <otherwise>
+                and name like concat('%','小','%')
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="dynamicWhere" parameterType="string" resultType="demo">
+        select * from demo
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="dynamicTrim" resultType="demo">
+        select * from demo
+        <trim prefix="where">
+            1=1
+        </trim>
+    </select>
+
+    <update id="dynamicSet">
+        update demo
+        <set>
+            <if test="age != null">age = #{age}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="dynamicForeach" parameterType="list" resultType="demo">
+        select * from demo
+        where id in
+        <foreach collection="list" item="it" separator="," open="(" close=")">
+            #{it}
+        </foreach>
+    </select>
+
+    <sql id="sql_property">name
+    , age</sql>
+    <sql id="sql_select">select
+        <include refid="sql_property"/>
+        from demo
+    </sql>
+    <select id="dynamicSql" resultType="demo">
+        <include refid="sql_select"></include>
+    </select>
+
+    <select id="dynamicBind" parameterType="demo" resultType="demo">
+        <!-- 2种绑定方式都可获取到name值-->
+        <bind name="pattern" value="'%' + demo.name + '%'"/>
+        <bind name="pattern2" value="'%' + demo.getName() + '%'"/>
+        select * from demo
+        where name like #{pattern2}
+    </select>
+</mapper>

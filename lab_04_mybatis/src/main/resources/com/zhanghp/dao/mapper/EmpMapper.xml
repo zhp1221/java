@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhanghp.dao.mapper.EmpMapper">
+
+    <resultMap id="empResultMap" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+    </resultMap>
+
+    <!-- 查询全部 -->
+    <select id="constructorQuery" parameterType="int" resultType="emp">
+        select *
+        from emp
+        where DEPTNO = #{deptno}
+    </select>
+</mapper>

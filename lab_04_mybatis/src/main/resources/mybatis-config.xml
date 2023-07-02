@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 引入外部文件配置 -->
+    <properties resource="jdbc.properties"/>
+    <settings>
+        <!-- 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。 -->
+        <!-- 表名有下划线的话，我这边测了下，加不加这个配置都可以映射，mybatis内部实现了  -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!-- 类型别名 -->
+    <typeAliases>
+        <package name="com.zhanghp.dao.pojo"/>
+    </typeAliases>
+    <!-- 环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc_driver}"/>
+                <property name="url" value="${jdbc_url}"/>
+                <property name="username" value="${jdbc_username}"/>
+                <property name="password" value="${jdbc_password}"/>
+            </dataSource>
+        </environment>
+        <environment id="deep_practice">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc_driver}"/>
+                <property name="url" value="${jdbc_deep_practice_url}"/>
+                <property name="username" value="${jdbc_username}"/>
+                <property name="password" value="${jdbc_password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 扫描xml路径 -->
+        <mapper resource="mappers/DemoMapper.xml"/>
+        <mapper resource="mappers/EmpMapper.xml"/>
+        <mapper resource="mappers/DeptMapper.xml"/>
+        <mapper resource="mappers/ProjectMapper.xml"/>
+        <!--
+        Exception:
+          Type interface com.zhanghp.dao.mapper.DemoMapper is already known to the MapperRegistry.
+          -->
+        <!--        <mapper resource="com/zhanghp/dao/mapper/DemoMapper2.xml"/>-->
+        <!-- 扫描代理接口模式类包路径 -->
+        <package name="com.zhanghp.dao.mapper"></package>
+    </mappers>
+</configuration>

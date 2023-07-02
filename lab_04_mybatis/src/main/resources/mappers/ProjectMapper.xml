@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhanghp.dao.pojo.Project">
+
+    <!-- 多对多查询 -->
+    <resultMap id="empResultMap" type="emp">
+        <id property="empno" column="EMPNO"/>
+        <result property="name" column="ENAME"/>
+        <result property="job" column="JOB"/>
+        <result property="mgr" column="MGR"/>
+        <result property="hiredate" column="HIREDATE"/>
+        <result property="sal" column="SAL"/>
+        <result property="comm" column="COMM"/>
+        <result property="deptno" column="DEPTNO"/>
+    </resultMap>
+
+    <resultMap id="multiToMulti" type="project">
+        <id property="pid" column="pid"/>
+        <result property="pname" column="pname"/>
+        <result property="money" column="money"/>
+        <collection property="projectRecords" ofType="projectRecord">
+            <!-- 多主键必须都写id属性，否则查询的结果会是一对一-->
+            <id property="pid" column="pid"/>
+            <id property="empno" column="empno"/>
+            <association property="empObject" javaType="emp" resultMap="empResultMap"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryMultiToMulti" resultMap="multiToMulti">
+        select *
+        from project p
+                 left join project_record pr on (p.pid = pr.pid)
+                 left join emp e on (pr.empno = e.empno)
+    </select>
+
+</mapper>

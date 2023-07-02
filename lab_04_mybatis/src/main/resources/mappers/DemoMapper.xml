@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhanghp.dao.pojo.Demo">
+
+    <!-- 查询全部 -->
+    <select id="selectDemo" resultType="demo">
+        select *
+        from demo
+    </select>
+
+    <!-- 查询单个 -->
+    <select id="selectOneRecord" resultType="demo">
+        select *
+        from demo
+        where id = 1
+    </select>
+
+    <!-- 查询全部 返回Map集合 -->
+    <select id="queryReturnMap" resultType="map">
+        select *
+        from demo
+    </select>
+
+    <!-- 通过主键id查询单个记录 -->
+    <select id="queryById" parameterType="int" resultType="demo">
+        select *
+        from demo
+        where id = #{id}
+    </select>
+
+    <!-- 通过map查询匹配记录集合 -->
+    <select id="queryByMap" parameterType="map" resultType="demo">
+        select *
+        from demo
+        where name = #{name}
+          and age = #{age}
+    </select>
+
+    <!-- 通过对象demo查询匹配记录集合 -->
+    <select id="queryByDemo" parameterType="demo" resultType="demo">
+        select *
+        from demo
+        where age = #{age}
+    </select>
+
+    <!-- 插入一条记录 -->
+    <insert id="addOne">
+        insert into demo
+        values (100, '测试', 30)
+    </insert>
+
+    <!-- 通过对象传参，插入一条记录 -->
+    <insert id="addOneByDemo" parameterType="demo">
+        insert into demo
+        values (#{id}, #{name}, #{age})
+    </insert>
+
+    <!-- 通过对象传参，使用主键自增，插入一条记录 -->
+    <insert id="addOneByDemoUseGenerateKey" parameterType="demo" useGeneratedKeys="true" keyProperty="id">
+        insert into demo
+        values (#{id}, #{name}, #{age})
+    </insert>
+
+    <!-- 更新一条记录 -->
+    <update id="updateOne" parameterType="demo">
+        update demo
+        set name = '小陈',
+            age  = 18
+        where id = 1
+    </update>
+
+    <!-- 通过对象传参，更新记录 -->
+    <update id="updateByDemo" parameterType="demo">
+        update demo
+        set name =#{name},
+            age  = #{age}
+        where id = #{id}
+    </update>
+
+    <!-- 删除一条记录 -->
+    <delete id="deleteOne">
+        delete
+        from demo
+        where id = 101
+    </delete>
+
+    <!-- 通过主键id删除一条记录 -->
+    <delete id="deleteOneById" parameterType="int">
+        delete
+        from demo
+        where id = #{id}
+    </delete>
+
+</mapper>
