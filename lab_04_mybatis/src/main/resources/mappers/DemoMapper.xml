@@ -64,7 +64,7 @@
     </insert>
 
     <!-- 更新一条记录 -->
-    <update id="updateOne" parameterType="demo">
+    <update id="updateOne">
         update demo
         set name = '小陈',
             age  = 18
