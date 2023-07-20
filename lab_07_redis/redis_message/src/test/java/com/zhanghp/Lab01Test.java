@@ -14,6 +14,11 @@ public class Lab01Test extends RedisMessageApplicationTests{
     private RedisPub redisPub;
     @Test
     public void sub(){
-        redisPub.publishByBytes();
+        redisPub.pubByJedisCon();
+    }
+
+    @Test
+    public void sub2(){
+        redisPub.pubByRedisCon();
     }
 }
