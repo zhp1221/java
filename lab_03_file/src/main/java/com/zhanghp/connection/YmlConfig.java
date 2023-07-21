@@ -1,4 +1,4 @@
-package com.zhanghp.con;
+package com.zhanghp.connection;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
