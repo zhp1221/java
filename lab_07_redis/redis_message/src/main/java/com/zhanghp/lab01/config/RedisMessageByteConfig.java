@@ -1,8 +1,7 @@
 package com.zhanghp.lab01.config;
 
 import com.zhanghp.enums.ChannelEnum;
-import com.zhanghp.lab01.pub.RedisPub;
-import com.zhanghp.lab01.sub.RedisSub;
+import com.zhanghp.lab01.sub.RedisByteSub;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,19 +17,19 @@ import org.springframework.data.redis.serializer.RedisSerializer;
  */
 @Slf4j
 @Configuration
-public class RedisMessageConfig {
+public class RedisMessageByteConfig {
 
     @Bean
-    RedisMessageListenerContainer messageContainer(JedisConnectionFactory jedisConnectionFactory, MessageListenerAdapter redisSubListener){
+    RedisMessageListenerContainer messageContainer(JedisConnectionFactory jedisConnectionFactory, MessageListenerAdapter messageByteListener) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(jedisConnectionFactory);
-        container.addMessageListener(redisSubListener, ChannelTopic.of(ChannelEnum.LAB01_CHANNEL.getChannel()));
+        container.addMessageListener(messageByteListener, ChannelTopic.of(ChannelEnum.LAB01_BYTE_CHANNEL.getChannel()));
         return container;
     }
 
-    @Bean("redisSubListener")
-    MessageListenerAdapter redisSub(RedisSub listener){
-        log.info("RedisSub register");
+    @Bean("messageByteListener")
+    MessageListenerAdapter redisSub(RedisByteSub listener) {
+        log.info("RedisByteSub register");
         MessageListenerAdapter listenerAdapter = new MessageListenerAdapter(listener, "onMessage");
         listenerAdapter.setSerializer(RedisSerializer.json());
         return listenerAdapter;

@@ -1,7 +1,5 @@
-package com.zhanghp.config;
+package com.zhanghp.con;
 
-import lombok.Data;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;

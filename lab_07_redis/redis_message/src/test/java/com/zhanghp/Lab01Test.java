@@ -1,6 +1,6 @@
 package com.zhanghp;
 
-import com.zhanghp.lab01.pub.RedisPub;
+import com.zhanghp.lab01.pub.RedisBytePub;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
@@ -9,16 +9,17 @@ import javax.annotation.Resource;
  * @author zhanghp
  * @date 2023/7/20 20:14
  */
-public class Lab01Test extends RedisMessageApplicationTests{
+public class Lab01Test extends RedisMessageApplicationTests {
     @Resource
-    private RedisPub redisPub;
+    private RedisBytePub redisPub;
+
     @Test
-    public void sub(){
+    public void pub() {
         redisPub.pubByJedisCon();
     }
 
     @Test
-    public void sub2(){
+    public void pub2() {
         redisPub.pubByRedisCon();
     }
 }

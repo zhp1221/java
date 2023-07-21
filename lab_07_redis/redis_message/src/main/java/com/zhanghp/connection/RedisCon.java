@@ -6,7 +6,6 @@ import org.springframework.data.redis.connection.jedis.JedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 /**
  * Redis 连接器配置
@@ -23,7 +22,7 @@ public class RedisCon {
      * @return {@link JedisConnectionFactory}
      */
     @Bean("jedisConnectionFactory")
-    public JedisConnectionFactory jedisConnectionFactory(){
+    public JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
     }
 
@@ -33,7 +32,7 @@ public class RedisCon {
      * @return {@link JedisConnection}
      */
     @Bean("jedisConnection")
-    public JedisConnection jedisConnection(){
+    public JedisConnection jedisConnection() {
         return new JedisConnection(new Jedis());
     }
 
@@ -44,7 +43,7 @@ public class RedisCon {
      * @return {@link RedisConnection}
      */
     @Bean("redisConnection")
-    public RedisConnection redisConnection(JedisConnectionFactory jedisConnectionFactory){
+    public RedisConnection redisConnection(JedisConnectionFactory jedisConnectionFactory) {
         return jedisConnectionFactory.getConnection();
     }
 }

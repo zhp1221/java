@@ -1,6 +1,5 @@
 package com.zhanghp.ctrl;
 
-import com.zhanghp.config.YmlConfig;
 import com.zhanghp.constant.MimeConstant;
 import com.zhanghp.model.FileDown;
 import com.zhanghp.utils.FileDownloadUtils;
