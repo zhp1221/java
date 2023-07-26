@@ -1,12 +1,15 @@
 package com.zhanghp.producer;
 
 import lombok.SneakyThrows;
+import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.apache.rocketmq.remoting.exception.RemotingException;
 
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -16,11 +19,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class NormalMessageProducer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // 同步消息发送
 //        syncMessage();
         // 异步消息发送
 //        asyncMessaage();
+        // 单向消息发送
+        onewayMessage();
     }
 
     @SneakyThrows
@@ -88,6 +93,21 @@ public class NormalMessageProducer {
         //异步发送，如果要求可靠传输，必须要等回调接口返回明确结果后才能结束逻辑，否则立即关闭Producer可能导致部分消息尚未传输成功
         countDownLatch.await(5, TimeUnit.SECONDS);
         // 一旦producer不再使用，关闭producer
+        producer.shutdown();
+    }
+
+    public static void onewayMessage() throws Exception {
+        // 初始化Producer
+        DefaultMQProducer producer = new DefaultMQProducer("group_name_oneway");
+        // 设置NameServer地址
+        producer.setNamesrvAddr("localhost:9876");
+        // 启动producer
+        producer.start();
+        // 创建一条消息，并指定topic、tag、body等信息，tag可以理解成标签，对消息进行再归类，RocketMQ可以在消费端对tag进行过滤
+        Message message = new Message("topic_name", "tag_name", "Hello RocketMQ - Oneway".getBytes(RemotingHelper.DEFAULT_CHARSET));
+        // 由于在oneway方式发送消息时没有请求应答处理，如果出现消息发送失败，则会因为没有重试而导致数据丢失。若数据不可丢，建议选用可靠同步或可靠异步发送方式。
+        producer.sendOneway(message);
+        // 关闭producer
         producer.shutdown();
     }
 }
