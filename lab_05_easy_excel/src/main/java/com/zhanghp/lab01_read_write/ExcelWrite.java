@@ -1,6 +1,8 @@
 package com.zhanghp.lab01_read_write;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.write.metadata.WriteSheet;
 import com.zhanghp.entity.DemoData;
 import com.zhanghp.utils.FileUtils;
 
@@ -17,7 +19,19 @@ public class ExcelWrite {
         // 存储路径 + 文件名
         String path = FileUtils.getPath() + "simpleWrite" + System.currentTimeMillis() + ".xlsx";
         // 写数据
-        EasyExcel.write(path, DemoData.class).sheet("demo").doWrite(ExcelWrite::data);
+//        EasyExcel.write(path, DemoData.class).sheet("demo").doWrite(ExcelWrite::data);
+        System.out.println(path);
+        System.out.println("----------");
+        try (ExcelWriter excelWriter = EasyExcel.write(path, DemoData.class).build()) {
+            // 这里注意 如果同一个sheet只要创建一次
+            WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
+            // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来
+            for (int i = 0; i < 5; i++) {
+                // 分页去数据库查询数据 这里可以去数据库查询每一页的数据
+                List<DemoData> data = data();
+                excelWriter.write(data, writeSheet);
+            }
+        }
     }
 
     /**
@@ -37,4 +51,5 @@ public class ExcelWrite {
         }
         return list;
     }
+
 }

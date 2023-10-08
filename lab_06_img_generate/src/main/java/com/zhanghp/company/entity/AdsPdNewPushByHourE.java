@@ -60,6 +60,10 @@ public class AdsPdNewPushByHourE {
 	 */
 	private String launchType;
 
+	private String exampleNum;
+
+	private String newGmv;
+
 	public static AdsPdNewPushByHourE generate(String launchType){
 		final AdsPdNewPushByHourE result = new AdsPdNewPushByHourE();
 		result.setExample("0.00%");
