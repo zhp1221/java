@@ -39,6 +39,8 @@ public class IbatisGenerate {
      */
     public static void generate() {
 
+        String projectPath = System.getProperty("user.dir");
+
         FastAutoGenerator.create("jdbc:mysql://localhost:3306/community_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC",
                         "root",
                         "root")
@@ -66,7 +68,7 @@ public class IbatisGenerate {
                             .mapper("dao.mapper") // mapper包名
                             .controller("controller") // controller包名
                             .other("model") // 自定义包名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "C:\\Dpan\\workspace\\java\\java\\lab_02_mybatis_plus\\generate\\src\\main\\resources\\mappers")); // xml位置
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath + "\\src\\main\\resources\\mappers")); // xml位置
                 })
 
                 // 策略配置
