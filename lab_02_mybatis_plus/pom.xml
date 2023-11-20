@@ -24,6 +24,7 @@
 
         <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <velocity.version>2.3</velocity.version>
+        <alibaba-thread-local.version>2.13.0</alibaba-thread-local.version>
     </properties>
 
     <dependencyManagement>
@@ -42,6 +43,11 @@
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${alibaba-thread-local.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

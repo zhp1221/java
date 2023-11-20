@@ -1,0 +1,26 @@
+{
+  "properties": [
+    {
+      "name": "custom.tenant-id",
+      "type": "java.lang.String",
+      "defaultValue": "tenantId",
+      "description": "default db tables tenant field"
+    }
+  ],
+  "hints": [
+    {
+      "name": "custom.tenant-id",
+      "values": [
+        {
+          "value": "tenantId",
+          "description": "表中租户字段名"
+        }
+      ],
+      "providers": [
+        {
+          "name": "any"
+        }
+      ]
+    }
+  ]
+}

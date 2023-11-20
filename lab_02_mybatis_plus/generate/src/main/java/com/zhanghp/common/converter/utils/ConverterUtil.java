@@ -6,7 +6,7 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 /**
- * é€šç”¨æ˜ å°„å·¥å…·ç±»
+ * Í¨ÓÃÓ³Éä¹¤¾ßÀà
  *
  * @author zhanghp
  * @date 2022-07-17 14:08
@@ -14,70 +14,70 @@ import java.util.List;
 public final class ConverterUtil {
 
     /**
-     * é€šç”¨roæ˜ å°„po
+     * Í¨ÓÃroÓ³Éäpo
      *
-     * @param clz æ˜ å°„ç±»
+     * @param clz Ó³ÉäÀà
      * @param ro  ro
-     * @param <E> å®ä½“æ³›å‹
-     * @param <V> VOååº”
-     * @param <C> æ˜ å°„ç±»æ³›å‹
+     * @param <E> ÊµÌå·ºĞÍ
+     * @param <V> VO·´Ó¦
+     * @param <C> Ó³ÉäÀà·ºĞÍ
      * @return po
      */
     public static <E, R, V, C extends CommonConverter<E, R, V>> E changeRO(Class<C> clz, R ro) {
-        // åˆå§‹åŒ–æŒ‡å®šç±»çš„æ˜ å°„å®ä¾‹
+        // ³õÊ¼»¯Ö¸¶¨ÀàµÄÓ³ÉäÊµÀı
         final C CONVERTER = Mappers.getMapper(clz);
-        // ro æ˜ å°„ po
+        // ro Ó³Éä po
         return CONVERTER.changeRO(ro);
     }
 
     /**
-     * é€šç”¨roæ˜ å°„po
+     * Í¨ÓÃroÓ³Éäpo
      *
-     * @param clz  æ˜ å°„ç±»
+     * @param clz  Ó³ÉäÀà
      * @param list ro lsit
-     * @param <E>  å®ä½“æ³›å‹
-     * @param <V>  VOååº”
-     * @param <C>  æ˜ å°„ç±»æ³›å‹
+     * @param <E>  ÊµÌå·ºĞÍ
+     * @param <V>  VO·´Ó¦
+     * @param <C>  Ó³ÉäÀà·ºĞÍ
      * @return po list
      */
     public static <E, R, V, C extends CommonConverter<E, R, V>> List<E> changeRO(Class<C> clz, List<R> list) {
-        // åˆå§‹åŒ–æŒ‡å®šç±»çš„æ˜ å°„å®ä¾‹
+        // ³õÊ¼»¯Ö¸¶¨ÀàµÄÓ³ÉäÊµÀı
         final C CONVERTER = Mappers.getMapper(clz);
-        // ro list æ˜ å°„ po list
+        // ro list Ó³Éä po list
         return CONVERTER.changeRO(list);
     }
 
     /**
-     * é€šç”¨poæ˜ å°„vo
+     * Í¨ÓÃpoÓ³Éävo
      *
-     * @param clz æ˜ å°„ç±»
-     * @param po  å®ä½“
-     * @param <E> å®ä½“æ³›å‹
-     * @param <V> VOååº”
-     * @param <C> æ˜ å°„ç±»æ³›å‹
+     * @param clz Ó³ÉäÀà
+     * @param po  ÊµÌå
+     * @param <E> ÊµÌå·ºĞÍ
+     * @param <V> VO·´Ó¦
+     * @param <C> Ó³ÉäÀà·ºĞÍ
      * @return VO
      */
     public static <E, R, V, C extends CommonConverter<E, R, V>> V toVO(Class<C> clz, E po) {
-        // åˆå§‹åŒ–æŒ‡å®šç±»çš„æ˜ å°„å®ä¾‹
+        // ³õÊ¼»¯Ö¸¶¨ÀàµÄÓ³ÉäÊµÀı
         final C CONVERTER = Mappers.getMapper(clz);
-        // po æ˜ å°„ vo
+        // po Ó³Éä vo
         return CONVERTER.toVO(po);
     }
 
     /**
-     * é€šç”¨ po list æ˜ å°„ vo list
+     * Í¨ÓÃ po list Ó³Éä vo list
      *
-     * @param clz æ˜ å°„ç±»
-     * @param po  å®ä½“
-     * @param <E> å®ä½“æ³›å‹
-     * @param <V> VOååº”
-     * @param <C> æ˜ å°„ç±»æ³›å‹
+     * @param clz Ó³ÉäÀà
+     * @param po  ÊµÌå
+     * @param <E> ÊµÌå·ºĞÍ
+     * @param <V> VO·´Ó¦
+     * @param <C> Ó³ÉäÀà·ºĞÍ
      * @return VO list
      */
     public static <E, R, V, C extends CommonConverter<E, R, V>> List<V> toVO(Class<C> clz, List<E> po) {
-        // åˆå§‹åŒ–æŒ‡å®šç±»çš„æ˜ å°„å®ä¾‹
+        // ³õÊ¼»¯Ö¸¶¨ÀàµÄÓ³ÉäÊµÀı
         final C CONVERTER = Mappers.getMapper(clz);
-        // po list æ˜ å°„ vo list
+        // po list Ó³Éä vo list
         return CONVERTER.toVO(po);
     }
 }

@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: zhp.1221
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  sql:
+    init:
+      # 建表sql
+      schema-locations: classpath:db/schema.sql
+      # 数据
+      data-locations: classpath:db/data.sql
+      # 生成模式
+      mode: always
+mybatis-plus:
+  configuration:
+    # sql日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+custom.tenan
