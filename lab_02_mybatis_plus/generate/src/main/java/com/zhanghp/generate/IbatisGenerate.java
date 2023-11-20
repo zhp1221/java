@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
@@ -41,9 +42,9 @@ public class IbatisGenerate {
 
         String projectPath = System.getProperty("user.dir");
 
-        FastAutoGenerator.create("jdbc:mysql://localhost:3306/community_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC",
+        FastAutoGenerator.create("jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&allowPublicKeyRetrieval=true",
                         "root",
-                        "root")
+                        "zhp.1221")
 
                 // 全局配置
                 .globalConfig(builder -> {
@@ -52,7 +53,7 @@ public class IbatisGenerate {
                             .author("zhanghp") // 作者名称
                             .dateType(DateType.ONLY_DATE) // 时间策略
                             .commentDate("yyyy-MM-dd") // 注释日期
-                            .outputDir("C:\\Dpan\\workspace\\java\\java\\lab_02_mybatis_plus\\generate\\src\\main\\java") // 输出目录
+                            .outputDir(projectPath + "\\src\\main\\java") // 输出目录
                             .fileOverride(); // 覆盖已生成文件
 //                            .disableOpenDir(); // 生成后禁止打开所生成的系统目录
                 })
@@ -78,7 +79,7 @@ public class IbatisGenerate {
                             .addTableSuffix("_db") // 增加过滤表后缀
                             .addFieldPrefix("t_") // 增加过滤字段前缀
                             .addFieldSuffix("_field") // 增加过滤字段后缀
-                            .addInclude("label") // 表匹配
+                            .addInclude("demo") // 表匹配
 
                             // Entity 策略配置
                             .entityBuilder()
@@ -133,6 +134,10 @@ public class IbatisGenerate {
 
                     builder
                             .customFile(customFile); // 自定义模板
+                })
+                .templateConfig(it ->{
+                        it.
+                                disable(TemplateType.CONTROLLER, TemplateType.SERVICEIMPL, TemplateType.SERVICEIMPL, TemplateType.ENTITY, TemplateType.MAPPER, TemplateType.XML);
                 })
                 .templateEngine(new EnhanceVelocityTemplateEngteteine())
                 .execute();
