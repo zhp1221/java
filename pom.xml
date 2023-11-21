@@ -25,6 +25,7 @@
         <spring-boot.version>2.7.3</spring-boot.version>
         <lombok.version>1.18.24</lombok.version>
         <hutool.version>5.4.7</hutool.version>
+        <spring-format.version>0.0.34</spring-format.version>
     </properties>
 
     <dependencyManagement>
@@ -58,7 +59,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
             </plugin>
+            <!--代码格式插件，默认使用spring 规则-->
+            <plugin>
+                <groupId>io.spring.javaformat</groupId>
+                <artifactId>spring-javaformat-maven-plugin</artifactId>
+                <version>${spring-format.version}</version>
+            </plugin>
         </plugins>
+
     </build>
 
 </project>

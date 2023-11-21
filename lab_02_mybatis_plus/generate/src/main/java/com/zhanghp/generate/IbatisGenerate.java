@@ -135,10 +135,6 @@ public class IbatisGenerate {
                     builder
                             .customFile(customFile); // 自定义模板
                 })
-                .templateConfig(it ->{
-                        it.
-                                disable(TemplateType.CONTROLLER, TemplateType.SERVICEIMPL, TemplateType.SERVICEIMPL, TemplateType.ENTITY, TemplateType.MAPPER, TemplateType.XML);
-                })
                 .templateEngine(new EnhanceVelocityTemplateEngteteine())
                 .execute();
     }
