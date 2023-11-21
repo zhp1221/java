@@ -16,11 +16,12 @@ import org.springframework.stereotype.Service;
  * @since 2023-11-20
  */
 @Service
-//@TenantClear
+// @TenantClear
 public class DemoServiceImpl extends ServiceImpl<DemoMapper, Demo> implements DemoService {
 
-    @Override
-    public int add(Demo demo) {
-        return baseMapper.insert(demo);
-    }
+	@Override
+	public int add(Demo demo) {
+		return baseMapper.insert(demo);
+	}
+
 }
