@@ -8,84 +8,76 @@ package com.zhanghp.constant;
  */
 public class MimeConstant {
 
-    /**
-     * JPG
-     */
-    public static final String IMAGE_JPG = "image/jpg";
+	/**
+	 * JPG
+	 */
+	public static final String IMAGE_JPG = "image/jpg";
 
-    /**
-     * PNG
-     */
-    public static final String IMAGE_PNG = "image/png";
+	/**
+	 * PNG
+	 */
+	public static final String IMAGE_PNG = "image/png";
 
-    /**
-     * JPEG
-     */
-    public static final String IMAGE_JPEG = "image/jpeg";
+	/**
+	 * JPEG
+	 */
+	public static final String IMAGE_JPEG = "image/jpeg";
 
-    /**
-     * BMP
-     */
-    public static final String IMAGE_BMP = "image/bmp";
+	/**
+	 * BMP
+	 */
+	public static final String IMAGE_BMP = "image/bmp";
 
-    /**
-     * GIF
-     */
-    public static final String IMAGE_GIF = "image/gif";
-    /**
-     * IMAGE(图片相关尾缀)
-     */
-    public static final String[] IMAGE_EXTENSION = {
-            "bmp", "gif", "jpg", "jpeg", "png"
-    };
+	/**
+	 * GIF
+	 */
+	public static final String IMAGE_GIF = "image/gif";
 
-    /**
-     * NORMAL(标准的相关尾缀)
-     */
-    public static final String[] NORMAL_WORD_EXTENSION = {
-            // IMAGE
-            "bmp", "gif", "jpg", "jpeg", "png",
-            // partial wps
-            "pdf", "doc", "docx", "wps"
-    };
+	/**
+	 * IMAGE(图片相关尾缀)
+	 */
+	public static final String[] IMAGE_EXTENSION = { "bmp", "gif", "jpg", "jpeg", "png" };
 
-    /**
-     * FLASH
-     */
-    public static final String[] FLASH_EXTENSION = {
-            "swf", "flv"
-    };
+	/**
+	 * NORMAL(标准的相关尾缀)
+	 */
+	public static final String[] NORMAL_WORD_EXTENSION = {
+			// IMAGE
+			"bmp", "gif", "jpg", "jpeg", "png",
+			// partial wps
+			"pdf", "doc", "docx", "wps" };
 
-    /**
-     * MEDIA
-     */
-    public static final String[] MEDIA_EXTENSION = {
-            "swf", "flv", "mp3", "wav", "wma", "wmv", "mid", "avi", "mpg", "asf", "rm", "rmvb"
-    };
+	/**
+	 * FLASH
+	 */
+	public static final String[] FLASH_EXTENSION = { "swf", "flv" };
 
-    /**
-     * VIDEO
-     */
-    public static final String[] VIDEO_EXTENSION = {
-            "mp4", "avi", "rmvb"
-    };
+	/**
+	 * MEDIA
+	 */
+	public static final String[] MEDIA_EXTENSION = { "swf", "flv", "mp3", "wav", "wma", "wmv", "mid", "avi", "mpg",
+			"asf", "rm", "rmvb" };
 
-    /**
-     * 默认尾缀
-     */
-    public static final String[] DEFAULT_ALLOWED_EXTENSION = {
-            // IMAGE
-            "bmp", "gif", "jpg", "jpeg", "png",
-            // wps
-            "pdf", "doc", "docx", "wps", "xls", "xlsx", "ppt",
-            // htm
-            "html", "htm",
-            // txt
-            "txt",
-            // COMPRESS
-            "rar", "zip", "gz", "bz2",
-            // video
-            "mp4", "avi", "rmvb"
-    };
+	/**
+	 * VIDEO
+	 */
+	public static final String[] VIDEO_EXTENSION = { "mp4", "avi", "rmvb" };
+
+	/**
+	 * 默认尾缀
+	 */
+	public static final String[] DEFAULT_ALLOWED_EXTENSION = {
+			// IMAGE
+			"bmp", "gif", "jpg", "jpeg", "png",
+			// wps
+			"pdf", "doc", "docx", "wps", "xls", "xlsx", "ppt",
+			// htm
+			"html", "htm",
+			// txt
+			"txt",
+			// COMPRESS
+			"rar", "zip", "gz", "bz2",
+			// video
+			"mp4", "avi", "rmvb" };
 
 }

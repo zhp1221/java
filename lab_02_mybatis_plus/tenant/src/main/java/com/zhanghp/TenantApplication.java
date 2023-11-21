@@ -11,7 +11,9 @@ import javax.swing.*;
  */
 @SpringBootApplication
 public class TenantApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(TenantApplication.class, args);
-    }
+
+	public static void main(String[] args) {
+		SpringApplication.run(TenantApplication.class, args);
+	}
+
 }

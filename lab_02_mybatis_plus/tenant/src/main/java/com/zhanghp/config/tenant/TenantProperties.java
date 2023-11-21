@@ -15,13 +15,14 @@ import java.util.List;
 @ConfigurationProperties(prefix = "custom.tenant")
 public class TenantProperties {
 
-    /**
-     * 租户字段名
-     */
-    private String tenantId;
+	/**
+	 * 租户字段名
+	 */
+	private String tenantId;
 
-    /**
-     * 过滤表
-     */
-    private List<String> ignoreTables;
+	/**
+	 * 过滤表
+	 */
+	private List<String> ignoreTables;
+
 }

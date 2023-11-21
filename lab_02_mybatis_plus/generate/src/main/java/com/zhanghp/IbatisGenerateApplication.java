@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 public class IbatisGenerateApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(IbatisGenerateApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(IbatisGenerateApplication.class, args);
+	}
 
 }

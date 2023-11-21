@@ -7,10 +7,12 @@ import org.junit.Test;
  * @date 2023/6/26 23:09
  */
 public class FuzzySelectMapperTest {
-    private final FuzzySelectMapperDemo DEMO = new FuzzySelectMapperDemo();
 
-    @Test
-    public void fuzzyQuery() {
-        DEMO.fuzzyQuery("小");
-    }
+	private final FuzzySelectMapperDemo DEMO = new FuzzySelectMapperDemo();
+
+	@Test
+	public void fuzzyQuery() {
+		DEMO.fuzzyQuery("小");
+	}
+
 }

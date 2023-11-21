@@ -8,14 +8,16 @@ import java.util.Map;
  * @date 2023/7/21 9:51
  */
 public interface MessageDelegate {
-    void handleMessage(String message);
 
-    void handleMessage(Map message);
+	void handleMessage(String message);
 
-    void handleMessage(byte[] message);
+	void handleMessage(Map message);
 
-    void handleMessage(Serializable message);
+	void handleMessage(byte[] message);
 
-    // pass the channel/pattern as well
-    void q(Serializable message, String channel);
+	void handleMessage(Serializable message);
+
+	// pass the channel/pattern as well
+	void q(Serializable message, String channel);
+
 }

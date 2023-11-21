@@ -6,10 +6,11 @@ import java.lang.annotation.*;
  * @author zhanghp
  * @date 2023/7/12 16:35
  */
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface ExcelEnum {
 
-    Class<? extends Enum<?>> enumClass();
+	Class<? extends Enum<?>> enumClass();
+
 }

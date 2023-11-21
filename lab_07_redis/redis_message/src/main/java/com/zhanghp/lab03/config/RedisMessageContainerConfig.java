@@ -19,21 +19,25 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @Configuration
 public class RedisMessageContainerConfig {
 
-    @Bean("redisMessageContainer")
-    RedisMessageListenerContainer redisMessageContainer(JedisConnectionFactory jedisConnectionFactory, MessageListenerAdapter messageContainerListener) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(jedisConnectionFactory);
-        container.addMessageListener(messageContainerListener, new PatternTopic(ChannelEnum.LAB03_CONTAINER_CHANNEL.getChannel()));
-        return container;
-    }
+	@Bean("redisMessageContainer")
+	RedisMessageListenerContainer redisMessageContainer(JedisConnectionFactory jedisConnectionFactory,
+			MessageListenerAdapter messageContainerListener) {
+		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+		container.setConnectionFactory(jedisConnectionFactory);
+		container.addMessageListener(messageContainerListener,
+				new PatternTopic(ChannelEnum.LAB03_CONTAINER_CHANNEL.getChannel()));
+		return container;
+	}
 
-    @Bean("messageContainerListener")
-    MessageListenerAdapter messageContainerListener(RedisSub redisSub) {
-        log.info("RedisSub register");
-//        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisSub, "onMessage");
-        // 默认回调"onMessage()"方法，方法参数可不用写
-        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisSub);
-        messageListenerAdapter.setSerializer(RedisSerializer.json());
-        return messageListenerAdapter;
-    }
+	@Bean("messageContainerListener")
+	MessageListenerAdapter messageContainerListener(RedisSub redisSub) {
+		log.info("RedisSub register");
+		// MessageListenerAdapter messageListenerAdapter = new
+		// MessageListenerAdapter(redisSub, "onMessage");
+		// 默认回调"onMessage()"方法，方法参数可不用写
+		MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisSub);
+		messageListenerAdapter.setSerializer(RedisSerializer.json());
+		return messageListenerAdapter;
+	}
+
 }

@@ -7,57 +7,57 @@ import org.junit.Test;
  * @date 2023/6/27 19:07
  */
 public class DynamicSqlTest {
-    private final DynamicSqlDemo DEMO = new DynamicSqlDemo();
 
-    @Test
-    public void dynamicIf() {
-        DEMO.dynamicIf();
-    }
+	private final DynamicSqlDemo DEMO = new DynamicSqlDemo();
 
-    @Test
-    public void dynamicIfByDemo() {
-        DEMO.dynamicIfByDemo();
-    }
+	@Test
+	public void dynamicIf() {
+		DEMO.dynamicIf();
+	}
 
-    @Test
-    public void dynamicIfFuzzy() {
-        DEMO.dynamicIfFuzzy();
-    }
+	@Test
+	public void dynamicIfByDemo() {
+		DEMO.dynamicIfByDemo();
+	}
 
-    @Test
-    public void dynamicChooseWhenAndOtherwise() {
-        DEMO.dynamicChooseWhenAndOtherwise();
-    }
+	@Test
+	public void dynamicIfFuzzy() {
+		DEMO.dynamicIfFuzzy();
+	}
 
-    @Test
-    public void dynamicWhere() {
-        DEMO.dynamicWhere();
-    }
+	@Test
+	public void dynamicChooseWhenAndOtherwise() {
+		DEMO.dynamicChooseWhenAndOtherwise();
+	}
 
-    @Test
-    public void dynamicTrim() {
-        DEMO.dynamicTrim();
-    }
+	@Test
+	public void dynamicWhere() {
+		DEMO.dynamicWhere();
+	}
 
-    @Test
-    public void dynamicSet() {
-        DEMO.dynamicSet();
-    }
+	@Test
+	public void dynamicTrim() {
+		DEMO.dynamicTrim();
+	}
 
-    @Test
-    public void dynamicForeach() {
-        DEMO.dynamicForeach();
-    }
+	@Test
+	public void dynamicSet() {
+		DEMO.dynamicSet();
+	}
 
-    @Test
-    public void dynamicSql() {
-        DEMO.dynamicSql();
-    }
+	@Test
+	public void dynamicForeach() {
+		DEMO.dynamicForeach();
+	}
 
-    @Test
-    public void dynamicBind() {
-        DEMO.dynamicBind();
-    }
+	@Test
+	public void dynamicSql() {
+		DEMO.dynamicSql();
+	}
 
+	@Test
+	public void dynamicBind() {
+		DEMO.dynamicBind();
+	}
 
 }

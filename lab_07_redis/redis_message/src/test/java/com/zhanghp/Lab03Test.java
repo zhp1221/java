@@ -10,11 +10,13 @@ import javax.annotation.Resource;
  * @date 2023/7/21 18:09
  */
 public class Lab03Test extends RedisMessageApplicationTests {
-    @Resource
-    private RedisPub redisPub;
 
-    @Test
-    public void pub() {
-        redisPub.pub();
-    }
+	@Resource
+	private RedisPub redisPub;
+
+	@Test
+	public void pub() {
+		redisPub.pub();
+	}
+
 }

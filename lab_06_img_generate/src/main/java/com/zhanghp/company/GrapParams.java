@@ -17,6 +17,9 @@ import java.awt.image.BufferedImage;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GrapParams {
-    BufferedImage image;
-    Graphics2D graphics;
+
+	BufferedImage image;
+
+	Graphics2D graphics;
+
 }

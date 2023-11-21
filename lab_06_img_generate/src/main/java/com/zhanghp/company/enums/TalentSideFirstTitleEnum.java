@@ -10,18 +10,18 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum TalentSideFirstTitleEnum {
-    MESSAGE(1, "信息流"),
-    LIVE(2, "直播间"),
-    ;
 
-    private final int type;
-    /**
-     * 侧边一级标题
-     */
-    private final String sideTitle;
+	MESSAGE(1, "信息流"), LIVE(2, "直播间"),;
 
+	private final int type;
 
-    public static int getFixation() {
-        return TalentImgEnum.TITLE_HEIGHT.getNum() + TalentImgEnum.FIXATION_CELL_HEIGHT.getNum() * 2;
-    }
+	/**
+	 * 侧边一级标题
+	 */
+	private final String sideTitle;
+
+	public static int getFixation() {
+		return TalentImgEnum.TITLE_HEIGHT.getNum() + TalentImgEnum.FIXATION_CELL_HEIGHT.getNum() * 2;
+	}
+
 }

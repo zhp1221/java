@@ -19,28 +19,32 @@ import java.io.InputStream;
  */
 public class ConnectionDbWithCode {
 
-    private static final String RESOURCE = "mybatis-config.xml";
-    private static final SqlSessionFactory SQL_SESSION_FACTORY;
+	private static final String RESOURCE = "mybatis-config.xml";
 
-    static {
-        InputStream resourceAsStream = null;
-        try {
-            resourceAsStream = Resources.getResourceAsStream(RESOURCE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SQL_SESSION_FACTORY = new SqlSessionFactoryBuilder().build(resourceAsStream);
-    }
+	private static final SqlSessionFactory SQL_SESSION_FACTORY;
 
-    public void connect() {
+	static {
+		InputStream resourceAsStream = null;
+		try {
+			resourceAsStream = Resources.getResourceAsStream(RESOURCE);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		SQL_SESSION_FACTORY = new SqlSessionFactoryBuilder().build(resourceAsStream);
+	}
 
-        final MysqlDataSource mysqlDataSource = new MysqlDataSource();
-        mysqlDataSource.setUser("root");
-        mysqlDataSource.setPassword("zhp.1221");
-        mysqlDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC");
-        final JdbcTransactionFactory jdbcTransactionFactory = new JdbcTransactionFactory();
-        final Environment environment = new Environment("connect_demo", jdbcTransactionFactory, mysqlDataSource);
-        final Configuration configuration = new Configuration(environment);
+	public void connect() {
 
-    }
+		final MysqlDataSource mysqlDataSource = new MysqlDataSource();
+		mysqlDataSource.setUser("root");
+		mysqlDataSource.setPassword("zhp.1221");
+		mysqlDataSource.setUrl(
+				"jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC");
+		final JdbcTransactionFactory jdbcTransactionFactory = new JdbcTransactionFactory();
+		final Environment environment = new Environment("connect_demo", jdbcTransactionFactory, mysqlDataSource);
+		final Configuration configuration = new Configuration(environment);
+
+	}
+
 }

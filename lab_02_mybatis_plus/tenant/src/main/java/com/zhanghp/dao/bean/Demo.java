@@ -19,28 +19,27 @@ import lombok.*;
 @Builder
 public class Demo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键id
-     */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+	/**
+	 * 主键id
+	 */
+	@TableId(value = "id", type = IdType.AUTO)
+	private Integer id;
 
-    /**
-     * 姓名
-     */
-    private String name;
+	/**
+	 * 姓名
+	 */
+	private String name;
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
 
-    /**
-     * 租户id
-     */
-    private Long tenantId;
-
+	/**
+	 * 租户id
+	 */
+	private Long tenantId;
 
 }

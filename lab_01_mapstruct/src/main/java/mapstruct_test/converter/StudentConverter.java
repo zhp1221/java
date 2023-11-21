@@ -15,24 +15,20 @@ import java.util.List;
 @Mapper
 public interface StudentConverter {
 
-    /**
-     * Student 映射 StudentVO
-     *
-     * @param entity Student
-     * @return StudentVO
-     */
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "name", target = "name"),
-            @Mapping(source = "photo", target = "photo")
-    })
-    StudentVO toVO(Student entity);
+	/**
+	 * Student 映射 StudentVO
+	 * @param entity Student
+	 * @return StudentVO
+	 */
+	@Mappings({ @Mapping(source = "id", target = "id"), @Mapping(source = "name", target = "name"),
+			@Mapping(source = "photo", target = "photo") })
+	StudentVO toVO(Student entity);
 
-    /**
-     * List<Student> 映射 List<StudentVO>
-     *
-     * @param list List<Student>
-     * @return List<StudentVO>
-     */
-    List<StudentVO> toVO(List<Student> list);
+	/**
+	 * List<Student> 映射 List<StudentVO>
+	 * @param list List<Student>
+	 * @return List<StudentVO>
+	 */
+	List<StudentVO> toVO(List<Student> list);
+
 }

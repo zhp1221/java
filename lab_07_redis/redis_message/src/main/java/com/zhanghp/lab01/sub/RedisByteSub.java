@@ -13,8 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisByteSub implements MessageListener {
 
-    @Override
-    public void onMessage(Message message, byte[] pattern) {
-        log.info("RedisByteSub 收到一条消息：{}", message.toString());
-    }
+	@Override
+	public void onMessage(Message message, byte[] pattern) {
+		log.info("RedisByteSub 收到一条消息：{}", message.toString());
+	}
+
 }

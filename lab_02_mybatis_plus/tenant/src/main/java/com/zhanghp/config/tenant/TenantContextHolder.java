@@ -12,54 +12,53 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class TenantContextHolder {
 
-    /**
-     * tenant_id
-     */
-    private final ThreadLocal<Long> TENAT_ID = new TransmittableThreadLocal<>();
-    /**
-     * 租户过滤标识
-     */
-    private final ThreadLocal<Boolean> TENANT_SKIP = new TransmittableThreadLocal<>();
+	/**
+	 * tenant_id
+	 */
+	private final ThreadLocal<Long> TENAT_ID = new TransmittableThreadLocal<>();
 
-    /**
-     * 获取租户
-     *
-     * @return 租户id
-     */
-    public Long getTenantId() {
-        return TENAT_ID.get();
-    }
+	/**
+	 * 租户过滤标识
+	 */
+	private final ThreadLocal<Boolean> TENANT_SKIP = new TransmittableThreadLocal<>();
 
-    /**
-     * 设置租户
-     *
-     * @param tenantId 租户
-     */
-    public void setTenantId(Long tenantId){
-        TENAT_ID.set(tenantId);
-    }
+	/**
+	 * 获取租户
+	 * @return 租户id
+	 */
+	public Long getTenantId() {
+		return TENAT_ID.get();
+	}
 
-    /**
-     * 设置是否过滤的标识
-     */
-    public void setTenantSkip(){
-        TENANT_SKIP.set(Boolean.TRUE);
-    }
+	/**
+	 * 设置租户
+	 * @param tenantId 租户
+	 */
+	public void setTenantId(Long tenantId) {
+		TENAT_ID.set(tenantId);
+	}
 
-    /**
-     * 获取是否跳过租户过滤的标识
-     *
-     * @return true-过滤 false-不过滤
-     */
-    public Boolean getTenantSkip(){
-        return TENANT_SKIP != null && TENANT_SKIP.get();
-    }
+	/**
+	 * 设置是否过滤的标识
+	 */
+	public void setTenantSkip() {
+		TENANT_SKIP.set(Boolean.TRUE);
+	}
 
-    /**
-     * 清空租户信息
-     */
-    public void clear(){
-        TENAT_ID.remove();
-        TENANT_SKIP.remove();
-    }
+	/**
+	 * 获取是否跳过租户过滤的标识
+	 * @return true-过滤 false-不过滤
+	 */
+	public Boolean getTenantSkip() {
+		return TENANT_SKIP != null && TENANT_SKIP.get();
+	}
+
+	/**
+	 * 清空租户信息
+	 */
+	public void clear() {
+		TENAT_ID.remove();
+		TENANT_SKIP.remove();
+	}
+
 }

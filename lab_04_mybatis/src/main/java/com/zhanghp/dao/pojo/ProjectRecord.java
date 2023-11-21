@@ -14,12 +14,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectRecord implements Serializable {
-    private Integer empno;
-    private Integer pid;
 
-    // 组合一个Emp对象作为属性
-    private Emp empObject;
+	private Integer empno;
 
-    // 鉴别器属性的使用
-    private Project project;
+	private Integer pid;
+
+	// 组合一个Emp对象作为属性
+	private Emp empObject;
+
+	// 鉴别器属性的使用
+	private Project project;
+
 }

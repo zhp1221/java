@@ -12,36 +12,37 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public enum SexEnum {
-    UN_DEFINED(0, "未填写"),
-    MAN(1, "男"),
-    WOMEN(2, "女"),
-    ;
-    private final Integer type;
-    private final String name;
 
-    public static Integer getType(String sex) {
-        Integer result = SexEnum.UN_DEFINED.getType();
-        if (Objects.isNull(sex)) {
-            return result;
-        }
-        for (SexEnum it : SexEnum.values()) {
-            if (it.getName().equals(sex)) {
-                result = it.getType();
-            }
-        }
-        return result;
-    }
+	UN_DEFINED(0, "未填写"), MAN(1, "男"), WOMEN(2, "女"),;
 
-    public static String getName(Integer type) {
-        String result = SexEnum.UN_DEFINED.getName();
-        if (Objects.isNull(type)) {
-            return result;
-        }
-        for (SexEnum it : SexEnum.values()) {
-            if (type.equals(it.getType())) {
-                result = it.getName();
-            }
-        }
-        return result;
-    }
+	private final Integer type;
+
+	private final String name;
+
+	public static Integer getType(String sex) {
+		Integer result = SexEnum.UN_DEFINED.getType();
+		if (Objects.isNull(sex)) {
+			return result;
+		}
+		for (SexEnum it : SexEnum.values()) {
+			if (it.getName().equals(sex)) {
+				result = it.getType();
+			}
+		}
+		return result;
+	}
+
+	public static String getName(Integer type) {
+		String result = SexEnum.UN_DEFINED.getName();
+		if (Objects.isNull(type)) {
+			return result;
+		}
+		for (SexEnum it : SexEnum.values()) {
+			if (type.equals(it.getType())) {
+				result = it.getName();
+			}
+		}
+		return result;
+	}
+
 }

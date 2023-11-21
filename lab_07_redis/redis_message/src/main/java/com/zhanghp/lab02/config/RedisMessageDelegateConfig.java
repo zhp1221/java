@@ -19,20 +19,23 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @Configuration
 public class RedisMessageDelegateConfig {
 
-    @Bean("redisMessageDelegate")
-    RedisMessageListenerContainer listenerContainer(JedisConnectionFactory jedisConnectionFactory, MessageListenerAdapter messageDelegate) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(jedisConnectionFactory);
-        container.addMessageListener(messageDelegate, ChannelTopic.of(ChannelEnum.LAB02_DELEAGTE_CHANNEL.getChannel()));
-        return container;
-    }
+	@Bean("redisMessageDelegate")
+	RedisMessageListenerContainer listenerContainer(JedisConnectionFactory jedisConnectionFactory,
+			MessageListenerAdapter messageDelegate) {
+		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+		container.setConnectionFactory(jedisConnectionFactory);
+		container.addMessageListener(messageDelegate, ChannelTopic.of(ChannelEnum.LAB02_DELEAGTE_CHANNEL.getChannel()));
+		return container;
+	}
 
-    @Bean("messageDelegate")
-    MessageListenerAdapter messageDelegate(DefaultMessageDelegate listener) {
-        log.info("DefaultMessageDelegate register");
-//        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(listener, "handleMessage");
-        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(listener);
-        messageListenerAdapter.setSerializer(RedisSerializer.json());
-        return messageListenerAdapter;
-    }
+	@Bean("messageDelegate")
+	MessageListenerAdapter messageDelegate(DefaultMessageDelegate listener) {
+		log.info("DefaultMessageDelegate register");
+		// MessageListenerAdapter messageListenerAdapter = new
+		// MessageListenerAdapter(listener, "handleMessage");
+		MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(listener);
+		messageListenerAdapter.setSerializer(RedisSerializer.json());
+		return messageListenerAdapter;
+	}
+
 }

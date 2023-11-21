@@ -11,38 +11,45 @@ import org.apache.ibatis.session.SqlSession;
  * @date 2023/6/26 13:30
  */
 public class SelectMapperDemo {
-    private final SqlSession SQLSESSION = ConnectUtil.getSqlSession();
-    private final DemoMapper MAPPER = SQLSESSION.getMapper(DemoMapper.class);
 
-    public void queryAll() {
-        try {
-            CommonUtil.printList(MAPPER.queryAll());
-        } finally {
-            ConnectUtil.release(SQLSESSION);
-        }
-    }
+	private final SqlSession SQLSESSION = ConnectUtil.getSqlSession();
 
-    public void insertOneByDemo(Demo demo) {
-        try {
-            System.out.println(MAPPER.insertOneByDemo(demo));
-        } finally {
-            ConnectUtil.release(SQLSESSION);
-        }
-    }
+	private final DemoMapper MAPPER = SQLSESSION.getMapper(DemoMapper.class);
 
-    public void updateOneByDemo(Demo demo) {
-        try {
-            System.out.println(MAPPER.updateOneByDemo(demo));
-        } finally {
-            ConnectUtil.release(SQLSESSION);
-        }
-    }
+	public void queryAll() {
+		try {
+			CommonUtil.printList(MAPPER.queryAll());
+		}
+		finally {
+			ConnectUtil.release(SQLSESSION);
+		}
+	}
 
-    public void deleteOneById(Integer id) {
-        try {
-            System.out.println(MAPPER.deleteOneById(id));
-        } finally {
-            ConnectUtil.release(SQLSESSION);
-        }
-    }
+	public void insertOneByDemo(Demo demo) {
+		try {
+			System.out.println(MAPPER.insertOneByDemo(demo));
+		}
+		finally {
+			ConnectUtil.release(SQLSESSION);
+		}
+	}
+
+	public void updateOneByDemo(Demo demo) {
+		try {
+			System.out.println(MAPPER.updateOneByDemo(demo));
+		}
+		finally {
+			ConnectUtil.release(SQLSESSION);
+		}
+	}
+
+	public void deleteOneById(Integer id) {
+		try {
+			System.out.println(MAPPER.deleteOneById(id));
+		}
+		finally {
+			ConnectUtil.release(SQLSESSION);
+		}
+	}
+
 }

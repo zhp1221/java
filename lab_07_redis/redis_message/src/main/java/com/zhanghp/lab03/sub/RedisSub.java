@@ -12,8 +12,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class RedisSub implements MessageListener {
-    @Override
-    public void onMessage(Message message, byte[] pattern) {
-        log.info("RedisSub 接收一条消息:{}", message);
-    }
+
+	@Override
+	public void onMessage(Message message, byte[] pattern) {
+		log.info("RedisSub 接收一条消息:{}", message);
+	}
+
 }

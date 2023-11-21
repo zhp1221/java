@@ -10,11 +10,12 @@ import java.util.List;
  */
 public interface CommonConverter<E, R, V> {
 
-    E changeRO(R r);
+	E changeRO(R r);
 
-    List<E> changeRO(List<R> list);
+	List<E> changeRO(List<R> list);
 
-    List<V> toVO(List<E> list);
+	List<V> toVO(List<E> list);
 
-    V toVO(E t);
+	V toVO(E t);
+
 }

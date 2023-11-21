@@ -11,52 +11,64 @@ import java.util.List;
  */
 @Data
 public class AdsPdNewPushByHourE {
+
 	/**
 	 * 例子数
 	 */
 	private String example;
+
 	/**
 	 * 重复率
 	 */
 	private String repeatPercent;
+
 	/**
 	 * 到课数
 	 */
 	private String arriveCount;
+
 	/**
 	 * 到课率
 	 */
 	private String arrivePercent;
+
 	/**
 	 * 转化订单数
 	 */
 	private String convertOrderCount;
+
 	/**
 	 * 转化率
 	 */
 	private String convertPercent;
+
 	/**
 	 * 到课转化率
 	 */
 	private String arriveConvertPercent;
+
 	/**
 	 * gmv
 	 */
 	private String gmv;
+
 	/**
 	 * 例子价值
 	 */
 	private String exampleValue;
+
 	/**
 	 * 听课大于等于10分钟人数占比
 	 */
 	private String moreThanTen;
+
 	/**
 	 * 听课大于等于80分钟人数占比
 	 */
 	private String moreThanEighty;
+
 	/**
-     * 投放平台
+	 * 投放平台
 	 */
 	private String launchType;
 
@@ -64,7 +76,7 @@ public class AdsPdNewPushByHourE {
 
 	private String newGmv;
 
-	public static AdsPdNewPushByHourE generate(String launchType){
+	public static AdsPdNewPushByHourE generate(String launchType) {
 		final AdsPdNewPushByHourE result = new AdsPdNewPushByHourE();
 		result.setExample("0.00%");
 		result.setRepeatPercent("22%");
@@ -81,11 +93,12 @@ public class AdsPdNewPushByHourE {
 		return result;
 	}
 
-	public static List<String> generate2(){
+	public static List<String> generate2() {
 		List<String> result = new ArrayList<>();
 		for (int i = 0; i < 11; i++) {
 			result.add(String.valueOf(i));
 		}
 		return result;
 	}
+
 }

@@ -9,5 +9,7 @@ import java.util.List;
  * @author zhanghp 13:58
  */
 public interface EmpMapper {
-    List<Emp> constructorQuery(@Param(value = "deptno") Integer deptno);
+
+	List<Emp> constructorQuery(@Param(value = "deptno") Integer deptno);
+
 }

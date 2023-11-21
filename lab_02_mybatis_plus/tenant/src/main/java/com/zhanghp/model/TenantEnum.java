@@ -6,8 +6,9 @@ package com.zhanghp.model;
  */
 public enum TenantEnum {
 
-    /**
-     * 默认
-     */
-    TENANT_ID
+	/**
+	 * 默认
+	 */
+	TENANT_ID
+
 }

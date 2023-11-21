@@ -14,11 +14,13 @@ import javax.annotation.Resource;
 @Slf4j
 @Component
 public class MessageDelegatePub {
-    @Resource(name = "redisTemplate")
-    private RedisTemplate<String, String> redisTemplate;
 
-    public void pub() {
-        log.info("开始推送数据...");
-        redisTemplate.convertAndSend(ChannelEnum.LAB02_DELEAGTE_CHANNEL.getChannel(), "推送数据");
-    }
+	@Resource(name = "redisTemplate")
+	private RedisTemplate<String, String> redisTemplate;
+
+	public void pub() {
+		log.info("开始推送数据...");
+		redisTemplate.convertAndSend(ChannelEnum.LAB02_DELEAGTE_CHANNEL.getChannel(), "推送数据");
+	}
+
 }

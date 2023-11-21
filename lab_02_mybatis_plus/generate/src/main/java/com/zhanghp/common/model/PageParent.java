@@ -10,41 +10,39 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "分页")
 public class PageParent {
 
-    @ApiModelProperty(value = "页数")
-    private Integer pageNum = 1;
+	@ApiModelProperty(value = "页数")
+	private Integer pageNum = 1;
 
-    @ApiModelProperty(value = "页大小")
-    private Integer pageSize = 10;
+	@ApiModelProperty(value = "页大小")
+	private Integer pageSize = 10;
 
-    @Override
-    public String toString() {
-        return "PageParent{" +
-                "pageNum=" + pageNum +
-                ", pageSize=" + pageSize +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "PageParent{" + "pageNum=" + pageNum + ", pageSize=" + pageSize + '}';
+	}
 
-    public PageParent() {
-    }
+	public PageParent() {
+	}
 
-    public PageParent(Integer pageNum, Integer pageSize) {
-        this.pageNum = pageNum;
-        this.pageSize = pageSize;
-    }
+	public PageParent(Integer pageNum, Integer pageSize) {
+		this.pageNum = pageNum;
+		this.pageSize = pageSize;
+	}
 
-    public Integer getPageNum() {
-        return pageNum;
-    }
+	public Integer getPageNum() {
+		return pageNum;
+	}
 
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
-    }
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
 
-    public Integer getPageSize() {
-        return pageSize;
-    }
+	public Integer getPageSize() {
+		return pageSize;
+	}
 
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+
 }

@@ -16,34 +16,32 @@ import redis.clients.jedis.Jedis;
 @Repository
 public class RedisCon {
 
-    /**
-     * Jedis连接工厂bean注入
-     *
-     * @return {@link JedisConnectionFactory}
-     */
-    @Bean("jedisConnectionFactory")
-    public JedisConnectionFactory jedisConnectionFactory() {
-        return new JedisConnectionFactory();
-    }
+	/**
+	 * Jedis连接工厂bean注入
+	 * @return {@link JedisConnectionFactory}
+	 */
+	@Bean("jedisConnectionFactory")
+	public JedisConnectionFactory jedisConnectionFactory() {
+		return new JedisConnectionFactory();
+	}
 
-    /**
-     * jedis连接bean注入
-     *
-     * @return {@link JedisConnection}
-     */
-    @Bean("jedisConnection")
-    public JedisConnection jedisConnection() {
-        return new JedisConnection(new Jedis());
-    }
+	/**
+	 * jedis连接bean注入
+	 * @return {@link JedisConnection}
+	 */
+	@Bean("jedisConnection")
+	public JedisConnection jedisConnection() {
+		return new JedisConnection(new Jedis());
+	}
 
-    /**
-     * 通过JedisFactory工厂生成RedisConnection
-     *
-     * @param jedisConnectionFactory 注入的Jedis工厂bean
-     * @return {@link RedisConnection}
-     */
-    @Bean("redisConnection")
-    public RedisConnection redisConnection(JedisConnectionFactory jedisConnectionFactory) {
-        return jedisConnectionFactory.getConnection();
-    }
+	/**
+	 * 通过JedisFactory工厂生成RedisConnection
+	 * @param jedisConnectionFactory 注入的Jedis工厂bean
+	 * @return {@link RedisConnection}
+	 */
+	@Bean("redisConnection")
+	public RedisConnection redisConnection(JedisConnectionFactory jedisConnectionFactory) {
+		return jedisConnectionFactory.getConnection();
+	}
+
 }

@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class StudentVO {
 
-    private Integer id;
+	private Integer id;
 
-    private String name;
+	private String name;
 
-    private String photo;
+	private String photo;
 
 }

@@ -19,19 +19,21 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @Configuration
 public class RedisMessageByteConfig {
 
-    @Bean
-    RedisMessageListenerContainer messageContainer(JedisConnectionFactory jedisConnectionFactory, MessageListenerAdapter messageByteListener) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(jedisConnectionFactory);
-        container.addMessageListener(messageByteListener, ChannelTopic.of(ChannelEnum.LAB01_BYTE_CHANNEL.getChannel()));
-        return container;
-    }
+	@Bean
+	RedisMessageListenerContainer messageContainer(JedisConnectionFactory jedisConnectionFactory,
+			MessageListenerAdapter messageByteListener) {
+		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+		container.setConnectionFactory(jedisConnectionFactory);
+		container.addMessageListener(messageByteListener, ChannelTopic.of(ChannelEnum.LAB01_BYTE_CHANNEL.getChannel()));
+		return container;
+	}
 
-    @Bean("messageByteListener")
-    MessageListenerAdapter redisSub(RedisByteSub listener) {
-        log.info("RedisByteSub register");
-        MessageListenerAdapter listenerAdapter = new MessageListenerAdapter(listener, "onMessage");
-        listenerAdapter.setSerializer(RedisSerializer.json());
-        return listenerAdapter;
-    }
+	@Bean("messageByteListener")
+	MessageListenerAdapter redisSub(RedisByteSub listener) {
+		log.info("RedisByteSub register");
+		MessageListenerAdapter listenerAdapter = new MessageListenerAdapter(listener, "onMessage");
+		listenerAdapter.setSerializer(RedisSerializer.json());
+		return listenerAdapter;
+	}
+
 }

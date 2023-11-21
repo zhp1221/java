@@ -8,37 +8,38 @@ import org.junit.Test;
  */
 public class ResultMapSqlTest {
 
-    private final ResultMapSqlDemo DEMO = new ResultMapSqlDemo();
+	private final ResultMapSqlDemo DEMO = new ResultMapSqlDemo();
 
-    @Test
-    public void queryResultMap() {
-        DEMO.queryResultMap();
-    }
+	@Test
+	public void queryResultMap() {
+		DEMO.queryResultMap();
+	}
 
-    @Test
-    public void queryConstructor() {
-        DEMO.queryConstructor();
-    }
+	@Test
+	public void queryConstructor() {
+		DEMO.queryConstructor();
+	}
 
-    @Test
-    public void oneToOne() {
-        DEMO.queryAssociation();
-        DEMO.queryAssociation2();
-        DEMO.queryAssociation3();
-    }
+	@Test
+	public void oneToOne() {
+		DEMO.queryAssociation();
+		DEMO.queryAssociation2();
+		DEMO.queryAssociation3();
+	}
 
-    @Test
-    public void oneToMulti() {
-        DEMO.queryOneToMulti();
-    }
+	@Test
+	public void oneToMulti() {
+		DEMO.queryOneToMulti();
+	}
 
-    @Test
-    public void multiToMulti() {
-        DEMO.queryMultiToMulti();
-    }
+	@Test
+	public void multiToMulti() {
+		DEMO.queryMultiToMulti();
+	}
 
-    @Test
-    public void callProcedure() {
-        DEMO.callProcedure(20);
-    }
+	@Test
+	public void callProcedure() {
+		DEMO.callProcedure(20);
+	}
+
 }

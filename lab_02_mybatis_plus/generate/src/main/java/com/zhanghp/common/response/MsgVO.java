@@ -18,10 +18,10 @@ import lombok.experimental.Accessors;
 @ApiModel(value = "分页数据类")
 public class MsgVO {
 
-    @ApiModelProperty(value = "符合查询条件记录的总数量")
-    private Long total;
+	@ApiModelProperty(value = "符合查询条件记录的总数量")
+	private Long total;
 
-    @ApiModelProperty(value = "符合查询条件的记录数")
-    private Object datas;
+	@ApiModelProperty(value = "符合查询条件的记录数")
+	private Object datas;
 
 }

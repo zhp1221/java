@@ -16,55 +16,51 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum TemplateDataValidatedStrategy {
-    EXTERNAL_ORDER(new ReadListener() {
-        @Override
-        public void invokeHead(Map headMap, AnalysisContext context) {
-            EasyExcelUtils.checkTemplateTitle(headMap, DemoData.class);
-            Integer approximateTotalRowNumber = context.readSheetHolder().getApproximateTotalRowNumber();
-            System.out.println(approximateTotalRowNumber);
-            System.out.println("ye");
-        }
 
-        @Override
-        public void invoke(Object o, AnalysisContext analysisContext) {
-        }
+	EXTERNAL_ORDER(new ReadListener() {
+		@Override
+		public void invokeHead(Map headMap, AnalysisContext context) {
+			EasyExcelUtils.checkTemplateTitle(headMap, DemoData.class);
+			Integer approximateTotalRowNumber = context.readSheetHolder().getApproximateTotalRowNumber();
+			System.out.println(approximateTotalRowNumber);
+			System.out.println("ye");
+		}
 
-        @Override
-        public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-        }
-    }),
-    SUMMARY(new ReadListener() {
-        @Override
-        public void invokeHead(Map headMap, AnalysisContext context) {
-            ReadListener.super.invokeHead(headMap, context);
-        }
+		@Override
+		public void invoke(Object o, AnalysisContext analysisContext) {
+		}
 
-        @Override
-        public void invoke(Object o, AnalysisContext analysisContext) {
-        }
+		@Override
+		public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+		}
+	}), SUMMARY(new ReadListener() {
+		@Override
+		public void invokeHead(Map headMap, AnalysisContext context) {
+			ReadListener.super.invokeHead(headMap, context);
+		}
 
-        @Override
-        public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-        }
-    }),
-    DETAIL(new ReadListener() {
-        @Override
-        public void invokeHead(Map headMap, AnalysisContext context) {
-            ReadListener.super.invokeHead(headMap, context);
-        }
+		@Override
+		public void invoke(Object o, AnalysisContext analysisContext) {
+		}
 
-        @Override
-        public void invoke(Object o, AnalysisContext analysisContext) {
-        }
+		@Override
+		public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+		}
+	}), DETAIL(new ReadListener() {
+		@Override
+		public void invokeHead(Map headMap, AnalysisContext context) {
+			ReadListener.super.invokeHead(headMap, context);
+		}
 
-        @Override
-        public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-        }
-    }),
-    ;
+		@Override
+		public void invoke(Object o, AnalysisContext analysisContext) {
+		}
 
+		@Override
+		public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+		}
+	}),;
 
-    private final ReadListener readListener;
-
+	private final ReadListener readListener;
 
 }

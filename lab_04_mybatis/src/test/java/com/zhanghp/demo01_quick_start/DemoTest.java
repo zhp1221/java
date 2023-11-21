@@ -8,9 +8,10 @@ import org.junit.Test;
  */
 public class DemoTest {
 
-    @Test
-    public void testConnectAndSelectOneRecord() {
-        final ConnectionDbWithXml connectionDBWithXml = new ConnectionDbWithXml();
-        connectionDBWithXml.connect();
-    }
+	@Test
+	public void testConnectAndSelectOneRecord() {
+		final ConnectionDbWithXml connectionDBWithXml = new ConnectionDbWithXml();
+		connectionDBWithXml.connect();
+	}
+
 }

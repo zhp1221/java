@@ -16,26 +16,22 @@ import java.util.List;
 @Mapper
 public interface StudentOptimizeConverter extends CommonConverter<Student, StudentVO> {
 
-    /**
-     * Student 映射 StudentVO
-     *
-     * @param entity Student
-     * @return StudentVO
-     */
-    @Override
-    @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "name", target = "name"),
-            @Mapping(source = "photo", target = "photo")
-    })
-    StudentVO toVO(Student entity);
+	/**
+	 * Student 映射 StudentVO
+	 * @param entity Student
+	 * @return StudentVO
+	 */
+	@Override
+	@Mappings({ @Mapping(source = "id", target = "id"), @Mapping(source = "name", target = "name"),
+			@Mapping(source = "photo", target = "photo") })
+	StudentVO toVO(Student entity);
 
-    /**
-     * List<Student> 映射 List<StudentVO>
-     *
-     * @param list List<Student>
-     * @return List<StudentVO>
-     */
-    @Override
-    List<StudentVO> toVO(List<Student> list);
+	/**
+	 * List<Student> 映射 List<StudentVO>
+	 * @param list List<Student>
+	 * @return List<StudentVO>
+	 */
+	@Override
+	List<StudentVO> toVO(List<Student> list);
+
 }

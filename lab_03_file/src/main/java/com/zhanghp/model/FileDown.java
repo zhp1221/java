@@ -8,7 +8,9 @@ import lombok.Data;
  */
 @Data
 public class FileDown {
-    private String fileName;
 
-    private String filePath;
+	private String fileName;
+
+	private String filePath;
+
 }

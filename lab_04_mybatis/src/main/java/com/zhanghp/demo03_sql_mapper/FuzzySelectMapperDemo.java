@@ -15,15 +15,19 @@ import java.util.List;
  * @date 2023/6/26 21:45
  */
 public class FuzzySelectMapperDemo {
-    private final SqlSession SQLSESSION = ConnectUtil.getSqlSession();
-    private final DemoMapper MAPPER = SQLSESSION.getMapper(DemoMapper.class);
 
-    public void fuzzyQuery(String fuzzyName) {
-        try {
-            final List<Demo> demos = MAPPER.fuzzyQuery(fuzzyName);
-            CommonUtil.printList(demos);
-        } finally {
-            ConnectUtil.release(SQLSESSION);
-        }
-    }
+	private final SqlSession SQLSESSION = ConnectUtil.getSqlSession();
+
+	private final DemoMapper MAPPER = SQLSESSION.getMapper(DemoMapper.class);
+
+	public void fuzzyQuery(String fuzzyName) {
+		try {
+			final List<Demo> demos = MAPPER.fuzzyQuery(fuzzyName);
+			CommonUtil.printList(demos);
+		}
+		finally {
+			ConnectUtil.release(SQLSESSION);
+		}
+	}
+
 }

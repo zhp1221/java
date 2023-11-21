@@ -18,33 +18,30 @@ import java.io.IOException;
 @AutoConfigureMockMvc
 class Lab03FileApplicationTests {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    static File file;
-    @BeforeAll
-    static void init(){
-        file = new File("C:\\Users\\zhang\\Desktop\\test.doc");
-    }
+	static File file;
 
-    @Test
-    void contextLoads() throws Exception {
-        FileInputStream fileInputStream = new FileInputStream(file);
-        MockMultipartFile file = new MockMultipartFile(
-                "name",
-                "original_name.doc",
-                "multipart/form-data",
-                fileInputStream);
-//        String response = mockMvc.perform(MockMvcRequestBuilders.fileUpload("/upload")
-//                .file(file)
-//                .characterEncoding("utf-8")
-//        ).andReturn().getResponse().getContentAsString();
-        String respoqnse = mockMvc.perform(MockMvcRequestBuilders.multipart("/upload")
-                .file(file)
-                .characterEncoding("utf-8")
-        ).andReturn().getResponse().getContentAsString();
-        System.out.println(respoqnse);
+	@BeforeAll
+	static void init() {
+		file = new File("C:\\Users\\zhang\\Desktop\\test.doc");
+	}
 
-    }
+	@Test
+	void contextLoads() throws Exception {
+		FileInputStream fileInputStream = new FileInputStream(file);
+		MockMultipartFile file = new MockMultipartFile("name", "original_name.doc", "multipart/form-data",
+				fileInputStream);
+		// String response = mockMvc.perform(MockMvcRequestBuilders.fileUpload("/upload")
+		// .file(file)
+		// .characterEncoding("utf-8")
+		// ).andReturn().getResponse().getContentAsString();
+		String respoqnse = mockMvc
+				.perform(MockMvcRequestBuilders.multipart("/upload").file(file).characterEncoding("utf-8")).andReturn()
+				.getResponse().getContentAsString();
+		System.out.println(respoqnse);
+
+	}
 
 }

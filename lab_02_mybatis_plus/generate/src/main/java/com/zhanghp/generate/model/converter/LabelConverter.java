@@ -20,56 +20,46 @@ import java.util.List;
  * @since 2022-08-09
  */
 @Mapper
-public interface LabelConverter extends CommonConverter<Label, LabelRO, LabelVO>{
+public interface LabelConverter extends CommonConverter<Label, LabelRO, LabelVO> {
 
-    /**
-    * <p>
-    *     po 转 vo
-    * </p>
-    *
-    * @return VO类
-    */
-    @Override
-    @Mappings({
-        @Mapping(source = "id", target = "id"),
-        @Mapping(source = "name", target = "name"),
-        @Mapping(source = "sort", target = "sort"),
-    })
-    LabelVO toVO(Label po);
+	/**
+	 * <p>
+	 * po 转 vo
+	 * </p>
+	 * @return VO类
+	 */
+	@Override
+	@Mappings({ @Mapping(source = "id", target = "id"), @Mapping(source = "name", target = "name"),
+			@Mapping(source = "sort", target = "sort"), })
+	LabelVO toVO(Label po);
 
-    /**
-    * <p>
-    *     po集合 转 vo集合
-    * </p>
-    *
-    * @return VO集合
-    */
-    @Override
-    List<LabelVO> toVO(List<Label> poList);
+	/**
+	 * <p>
+	 * po集合 转 vo集合
+	 * </p>
+	 * @return VO集合
+	 */
+	@Override
+	List<LabelVO> toVO(List<Label> poList);
 
-    /**
-    * <p>
-    *     ro 转 po
-    * </p>
-    *
-    * @return PO类
-    */
-    @Override
-    @Mappings({
-        @Mapping(source = "id", target = "id"),
-        @Mapping(source = "name", target = "name"),
-        @Mapping(source = "sort", target = "sort"),
-    })
-    Label changeRO(LabelRO ro);
+	/**
+	 * <p>
+	 * ro 转 po
+	 * </p>
+	 * @return PO类
+	 */
+	@Override
+	@Mappings({ @Mapping(source = "id", target = "id"), @Mapping(source = "name", target = "name"),
+			@Mapping(source = "sort", target = "sort"), })
+	Label changeRO(LabelRO ro);
 
-    /**
-    * <p>
-    *     ro集合 转 po集合
-    * </p>
-    *
-    * @return PO集合
-    */
-    @Override
-    List<Label> changeRO(List<LabelRO> roList);
+	/**
+	 * <p>
+	 * ro集合 转 po集合
+	 * </p>
+	 * @return PO集合
+	 */
+	@Override
+	List<Label> changeRO(List<LabelRO> roList);
 
 }

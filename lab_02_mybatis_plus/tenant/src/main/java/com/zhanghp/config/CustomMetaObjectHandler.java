@@ -10,15 +10,16 @@ import org.apache.ibatis.reflection.MetaObject;
  */
 public class CustomMetaObjectHandler implements MetaObjectHandler {
 
-    private static final String TENANT_ID = "tenantId";
+	private static final String TENANT_ID = "tenantId";
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        this.setFieldValByName(TENANT_ID, TenantContextHolder.getTenantId(), metaObject);
-    }
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		this.setFieldValByName(TENANT_ID, TenantContextHolder.getTenantId(), metaObject);
+	}
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
+	@Override
+	public void updateFill(MetaObject metaObject) {
 
-    }
+	}
+
 }

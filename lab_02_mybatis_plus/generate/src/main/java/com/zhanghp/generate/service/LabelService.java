@@ -16,15 +16,17 @@ import java.util.*;
  * @since 2022-08-09
  */
 public interface LabelService extends IService<Label> {
-    boolean create(LabelRO ro);
 
-    boolean delete(Long id);
+	boolean create(LabelRO ro);
 
-    boolean update(LabelRO ro);
+	boolean delete(Long id);
 
-    LabelVO getById(Long id);
+	boolean update(LabelRO ro);
 
-    List<LabelVO> findList(LabelQO qo);
+	LabelVO getById(Long id);
 
-    List<LabelVO> findPage(LabelQO qo);
+	List<LabelVO> findList(LabelQO qo);
+
+	List<LabelVO> findPage(LabelQO qo);
+
 }

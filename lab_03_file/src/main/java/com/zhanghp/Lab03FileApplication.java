@@ -8,8 +8,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @SpringBootApplication
 public class Lab03FileApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Lab03FileApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Lab03FileApplication.class, args);
+	}
 
 }

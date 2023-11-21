@@ -18,10 +18,10 @@ import lombok.experimental.Accessors;
 @ApiModel(value = "文件")
 public class FileVO {
 
-    @ApiModelProperty(value = "文件名称")
-    private String fileName;
+	@ApiModelProperty(value = "文件名称")
+	private String fileName;
 
-    @ApiModelProperty(value = "文件路径")
-    private String filePath;
+	@ApiModelProperty(value = "文件路径")
+	private String filePath;
 
 }

@@ -12,13 +12,15 @@ import org.springframework.data.redis.serializer.RedisSerializer;
  */
 @Configuration
 public class RedisConfig {
-    @Bean("redisTemplate")
-    RedisTemplate<String, String> redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
-        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
-        // 配置连接工厂
-        redisTemplate.setConnectionFactory(jedisConnectionFactory);
-        // 配置序列化方式
-        redisTemplate.setValueSerializer(RedisSerializer.json());
-        return redisTemplate;
-    }
+
+	@Bean("redisTemplate")
+	RedisTemplate<String, String> redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+		RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+		// 配置连接工厂
+		redisTemplate.setConnectionFactory(jedisConnectionFactory);
+		// 配置序列化方式
+		redisTemplate.setValueSerializer(RedisSerializer.json());
+		return redisTemplate;
+	}
+
 }

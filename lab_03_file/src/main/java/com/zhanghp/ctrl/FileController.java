@@ -17,15 +17,17 @@ import java.io.IOException;
 @RestController
 public class FileController {
 
-    @PostMapping("/upload")
-    public String upload(@RequestBody MultipartFile file) throws IOException {
-        // 文件上传
-        return FileUploadUtils.upload(file, "C:\\upload", MimeConstant.DEFAULT_ALLOWED_EXTENSION);
-    }
+	@PostMapping("/upload")
+	public String upload(@RequestBody MultipartFile file) throws IOException {
+		// 文件上传
+		return FileUploadUtils.upload(file, "C:\\upload", MimeConstant.DEFAULT_ALLOWED_EXTENSION);
+	}
 
-    @PostMapping("/download")
-    public void download(HttpServletResponse response, @RequestBody FileDown file) throws IOException {
-        // 文件上传
-        FileDownloadUtils.download(response, file.getFileName(), file.getFilePath(), MimeConstant.DEFAULT_ALLOWED_EXTENSION, FileDownloadUtils.DISPOSITION_ATTACHMENT);
-    }
+	@PostMapping("/download")
+	public void download(HttpServletResponse response, @RequestBody FileDown file) throws IOException {
+		// 文件上传
+		FileDownloadUtils.download(response, file.getFileName(), file.getFilePath(),
+				MimeConstant.DEFAULT_ALLOWED_EXTENSION, FileDownloadUtils.DISPOSITION_ATTACHMENT);
+	}
+
 }

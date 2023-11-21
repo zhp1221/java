@@ -9,5 +9,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface DeptMapper {
 
-    Dept queryByDeptno(@Param(value = "deptNo") Integer deptNo);
+	Dept queryByDeptno(@Param(value = "deptNo") Integer deptNo);
+
 }

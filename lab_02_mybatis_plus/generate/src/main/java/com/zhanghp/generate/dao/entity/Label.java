@@ -28,52 +28,51 @@ import lombok.experimental.Accessors;
 @TableName("label")
 public class Label extends Model<Label> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
-    private Long id;
+	/**
+	 * 主键
+	 */
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
+	private Long id;
 
-    /**
-     * 名称
-     */
-    @TableField("name")
-    private String name;
+	/**
+	 * 名称
+	 */
+	@TableField("name")
+	private String name;
 
-    /**
-     * 排序字段
-     */
-    @TableField("sort")
-    private Integer sort;
+	/**
+	 * 排序字段
+	 */
+	@TableField("sort")
+	private Integer sort;
 
-    /**
-     * 创建时间
-     */
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+	/**
+	 * 创建时间
+	 */
+	@TableField(value = "create_time", fill = FieldFill.INSERT)
+	private Date createTime;
 
-    /**
-     * 修改时间
-     */
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
+	/**
+	 * 修改时间
+	 */
+	@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+	private Date updateTime;
 
+	public static final String ID = "id";
 
-    public static final String ID = "id";
+	public static final String NAME = "name";
 
-    public static final String NAME = "name";
+	public static final String SORT = "sort";
 
-    public static final String SORT = "sort";
+	public static final String CREATE_TIME = "create_time";
 
-    public static final String CREATE_TIME = "create_time";
+	public static final String UPDATE_TIME = "update_time";
 
-    public static final String UPDATE_TIME = "update_time";
-
-    @Override
-    public Serializable pkVal() {
-        return this.id;
-    }
+	@Override
+	public Serializable pkVal() {
+		return this.id;
+	}
 
 }

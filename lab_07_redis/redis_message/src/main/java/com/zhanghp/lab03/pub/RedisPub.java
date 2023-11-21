@@ -12,10 +12,12 @@ import javax.annotation.Resource;
  */
 @Component
 public class RedisPub {
-    @Resource
-    private RedisTemplate<String, String> redisTemplate;
 
-    public void pub() {
-        redisTemplate.convertAndSend(ChannelEnum.LAB03_CONTAINER_CHANNEL.getChannel(), "发送消息");
-    }
+	@Resource
+	private RedisTemplate<String, String> redisTemplate;
+
+	public void pub() {
+		redisTemplate.convertAndSend(ChannelEnum.LAB03_CONTAINER_CHANNEL.getChannel(), "发送消息");
+	}
+
 }

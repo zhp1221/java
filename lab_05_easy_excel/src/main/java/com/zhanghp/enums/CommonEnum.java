@@ -10,8 +10,11 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum CommonEnum {
-    EXCEL_DIRECOTRY_NAME("excel","excel归属的文件夹名称"),
-    DEMO_DATA_EXCEl("demo_data.xlsx","excel文件名：demo_data.xlsx");
-    private final String constant;
-    private final String name;
+
+	EXCEL_DIRECOTRY_NAME("excel", "excel归属的文件夹名称"), DEMO_DATA_EXCEl("demo_data.xlsx", "excel文件名：demo_data.xlsx");
+
+	private final String constant;
+
+	private final String name;
+
 }

@@ -16,9 +16,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Demo implements Serializable {
-    private Integer id;
 
-    private String name;
+	private Integer id;
 
-    private Integer age;
+	private String name;
+
+	private Integer age;
+
 }
