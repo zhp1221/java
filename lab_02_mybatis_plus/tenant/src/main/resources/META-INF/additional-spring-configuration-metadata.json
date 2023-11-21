@@ -1,26 +1,16 @@
 {
   "properties": [
     {
-      "name": "custom.tenant-id",
+      "name": "custom.tenant.tenant-id",
       "type": "java.lang.String",
       "defaultValue": "tenantId",
       "description": "default db tables tenant field"
-    }
-  ],
-  "hints": [
+    },
     {
-      "name": "custom.tenant-id",
-      "values": [
-        {
-          "value": "tenantId",
-          "description": "表中租户字段名"
-        }
-      ],
-      "providers": [
-        {
-          "name": "any"
-        }
-      ]
+      "name": "custom.tenant.ignore-tables",
+      "type": "java.util.List<String>",
+      "defaultValue": "",
+      "description": "filter table"
     }
   ]
 }

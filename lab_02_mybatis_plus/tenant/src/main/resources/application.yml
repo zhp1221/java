@@ -19,4 +19,11 @@ mybatis-plus:
     # sql日志打印
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-custom.tenan
+custom:
+  tenant:
+    # 租户字段名称
+    tenant-id: tenantId
+    # 忽略租户的表
+    ignore-tables:
+      - demo01
+      - demo02

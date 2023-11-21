@@ -1,5 +1,6 @@
 package com.zhanghp.config.tenant;
 
+import cn.hutool.core.collection.IterUtil;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
@@ -21,7 +22,7 @@ public class TenantConfig {
 	 * 避免缓存万一出现问题
 	 */
 	@Bean
-	public MybatisPlusInterceptor mybatisPlusInterceptor() {
+	public MybatisPlusInterceptor mybatisPlusInterceptor(TenantProperties properties) {
 		MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
 		interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {
 			@Override
@@ -31,6 +32,11 @@ public class TenantConfig {
 					return new NullValue();
 				}
 				return new LongValue(tenantId);
+			}
+
+			@Override
+			public String getTenantIdColumn() {
+				return properties.getTenantId();
 			}
 
 			// 这是 default 方法,默认返回 false 表示所有表都需要拼多租户条件
@@ -43,7 +49,12 @@ public class TenantConfig {
 				if (tenantId == null) {
 					return Boolean.TRUE;
 				}
-
+				if (IterUtil.isEmpty(properties.getIgnoreTables())) {
+					return false;
+				}
+				if (properties.getIgnoreTables().contains(tableName)) {
+					return true;
+				}
 				return false;
 			}
 		}));

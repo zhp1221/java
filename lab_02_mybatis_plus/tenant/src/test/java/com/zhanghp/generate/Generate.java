@@ -1,4 +1,4 @@
-package com.zhanghp.gen;
+package com.zhanghp.generate;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
