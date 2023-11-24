@@ -21,8 +21,10 @@ mybatis-plus:
 
 custom:
   tenant:
+    # 是否注入deepTenantConfig的bean开关
+    deep-config: false
     # 租户字段名称
-    tenant-id: tenantId
+    tenant-id: tenant_id
     # 忽略租户的表
     ignore-tables:
       - demo01

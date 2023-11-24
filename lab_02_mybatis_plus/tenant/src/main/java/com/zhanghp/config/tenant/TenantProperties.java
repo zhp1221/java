@@ -25,4 +25,9 @@ public class TenantProperties {
 	 */
 	private List<String> ignoreTables;
 
+	/**
+	 * 注入DeepTenantCofig的bean的开关
+	 */
+	private Boolean deepConfig;
+
 }

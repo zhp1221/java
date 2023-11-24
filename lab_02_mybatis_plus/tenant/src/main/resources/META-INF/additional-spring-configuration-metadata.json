@@ -1,6 +1,12 @@
 {
   "properties": [
     {
+      "name": "custom.tenant.deep-config",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "inject deepTenantConfig switch"
+    },
+    {
       "name": "custom.tenant.tenant-id",
       "type": "java.lang.String",
       "defaultValue": "tenantId",

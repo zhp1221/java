@@ -2,6 +2,8 @@ package com.zhanghp.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.zhanghp.config.tenant.TenantContextHolder;
+import com.zhanghp.config.tenant.TenantProperties;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.reflection.MetaObject;
 
 /**
@@ -19,7 +21,6 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
 
 	@Override
 	public void updateFill(MetaObject metaObject) {
-
 	}
 
 }
