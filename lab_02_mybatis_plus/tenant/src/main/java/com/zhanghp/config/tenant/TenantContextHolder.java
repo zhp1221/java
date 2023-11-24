@@ -58,6 +58,10 @@ public class TenantContextHolder {
 	 */
 	public void clear() {
 		TENAT_ID.remove();
+		clearSkip();
+	}
+
+	public void clearSkip(){
 		TENANT_SKIP.remove();
 	}
 
