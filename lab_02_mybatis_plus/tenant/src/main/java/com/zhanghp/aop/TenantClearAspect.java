@@ -28,10 +28,11 @@ public class TenantClearAspect {
 		if (clear != null) {
 			TenantContextHolder.setTenantSkip();
 		}
+		Object result = point.proceed();
 		if (!clear.globalFlag()) {
-			TenantContextHolder.clearSkip();
+			TenantContextHolder.setSkip(Boolean.FALSE);
 		}
-		return point.proceed();
+		return result;
 	}
 
 }

@@ -7,6 +7,8 @@ import com.zhanghp.service.DemoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * mybatis - demo表 服务实现类
@@ -16,12 +18,17 @@ import org.springframework.stereotype.Service;
  * @since 2023-11-20
  */
 @Service
-// @TenantClear
+ @TenantClear(globalFlag = false)
 public class DemoServiceImpl extends ServiceImpl<DemoMapper, Demo> implements DemoService {
 
 	@Override
-	public int add(Demo demo) {
+	public int addOne(Demo demo) {
 		return baseMapper.insert(demo);
+	}
+
+	@Override
+	public List<Demo> listAll() {
+		return super.list();
 	}
 
 }

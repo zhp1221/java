@@ -1,7 +1,9 @@
 package com.zhanghp;
 
+import com.zhanghp.config.tenant.TenantContextHolder;
 import com.zhanghp.dao.bean.Demo;
 import com.zhanghp.service.DemoService;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
@@ -15,9 +17,20 @@ public class TenantClearTest extends AppTest {
 	@Resource
 	private DemoService demoService;
 
+	@BeforeAll
+	public static void setTenantId(){
+		TenantContextHolder.setTenantId(1L);
+	}
+
 	@Test
 	public void add() {
-		demoService.add(Demo.builder().age(18).name("朵莉亚").build());
+		// 有租户查询
+		demoService.list();
+		// 无租户查询
+		demoService.listAll();
+		// globalFlag:true ->  无租户标志查询
+		// globalFlag:false -> 有租户标志查询
+		demoService.list();
 	}
 
 }

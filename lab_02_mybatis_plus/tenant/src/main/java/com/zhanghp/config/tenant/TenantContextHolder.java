@@ -22,6 +22,11 @@ public class TenantContextHolder {
 	 */
 	private final ThreadLocal<Boolean> TENANT_SKIP = new TransmittableThreadLocal<>();
 
+	static{
+		TENAT_ID.set(null);
+		TENANT_SKIP.set(Boolean.FALSE);
+	}
+
 	/**
 	 * 获取租户
 	 * @return 租户id
@@ -58,11 +63,16 @@ public class TenantContextHolder {
 	 */
 	public void clear() {
 		TENAT_ID.remove();
-		clearSkip();
+		TENANT_SKIP.remove();
 	}
 
-	public void clearSkip(){
-		TENANT_SKIP.remove();
+	/**
+	 * 设置标志：是否跳过租户
+	 *
+	 * @param flag true:过滤 false:不过滤
+	 */
+	public void setSkip(boolean flag){
+		TENANT_SKIP.set(flag);
 	}
 
 }

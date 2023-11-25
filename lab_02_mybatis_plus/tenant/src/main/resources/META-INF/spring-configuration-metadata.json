@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "custom",
+      "type": "com.zhanghp.config.tenant.TenantProperties",
+      "sourceType": "com.zhanghp.config.tenant.TenantProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "custom.ignore-tables",
+      "type": "java.util.List<java.lang.String>",
+      "description": "过滤表",
+      "sourceType": "com.zhanghp.config.tenant.TenantProperties"
+    },
+    {
+      "name": "custom.tenant-id",
+      "type": "java.lang.String",
+      "description": "租户字段名",
+      "sourceType": "com.zhanghp.config.tenant.TenantProperties"
+    }
+  ],
+  "hints": []
+}
