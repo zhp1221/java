@@ -30,7 +30,7 @@ public class TenantClearAspect {
 		}
 		Object result = point.proceed();
 		if (!clear.globalFlag()) {
-			TenantContextHolder.setSkip(Boolean.FALSE);
+			TenantContextHolder.clearSkip();
 		}
 		return result;
 	}
