@@ -28,10 +28,13 @@ public class DeepTenantConfig {
         interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {
             @Override
             public Expression getTenantId() {
+                // 获取租户
                 Long tenantId = TenantContextHolder.getTenantId();
+                // 租户为空则返回空
                 if (tenantId == null) {
                     return new NullValue();
                 }
+                // 返回租户
                 return new LongValue(tenantId);
             }
 
@@ -43,16 +46,20 @@ public class DeepTenantConfig {
             // 这是 default 方法,默认返回 false 表示所有表都需要拼多租户条件
             @Override
             public boolean ignoreTable(String tableName) {
+                // 1.是否跳过租户对该表对操作
                 if (TenantContextHolder.getTenantSkip()) {
                     return Boolean.TRUE;
                 }
+                // 2.租户为空，则对该表不进行租户的操作
                 Long tenantId = TenantContextHolder.getTenantId();
                 if (tenantId == null) {
                     return Boolean.TRUE;
                 }
+                // 3.忽略表对配置为空，则所有表都进行租户操作
                 if (IterUtil.isEmpty(properties.getIgnoreTables())) {
                     return false;
                 }
+                // 4.指定的表永远不进行租户操作
                 if (properties.getIgnoreTables().contains(tableName)) {
                     return true;
                 }

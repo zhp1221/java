@@ -5,6 +5,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.zhanghp.config.tenant.TenantContextHolder;
 import com.zhanghp.config.tenant.TenantProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.annotation.Resource;

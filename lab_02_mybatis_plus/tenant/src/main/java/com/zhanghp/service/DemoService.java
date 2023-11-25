@@ -15,11 +15,15 @@ import java.util.List;
  */
 public interface DemoService extends IService<Demo> {
 
-	int addOne(Demo demo);
-
-	List<Demo> getAll();
-
 	List<Demo> getAllByTenantClear();
+
+	void b();
+
+	void a();
+
+	void c();
+
+	void d();
 
 
 }
