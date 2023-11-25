@@ -17,7 +17,9 @@ public interface DemoService extends IService<Demo> {
 
 	int addOne(Demo demo);
 
-	List<Demo> listAll();
+	List<Demo> getAll();
+
+	List<Demo> getAllByTenantClear();
 
 
 }

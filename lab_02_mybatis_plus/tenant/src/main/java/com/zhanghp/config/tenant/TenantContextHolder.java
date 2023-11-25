@@ -61,6 +61,9 @@ public class TenantContextHolder {
 		clearSkip();
 	}
 
+	/**
+	 * 清空租户过滤标识
+	 */
 	public void clearSkip(){
 		TENANT_SKIP.remove();
 	}

@@ -1,7 +1,6 @@
 package com.zhanghp;
 
 import com.zhanghp.config.tenant.TenantContextHolder;
-import com.zhanghp.dao.bean.Demo;
 import com.zhanghp.service.DemoService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,12 +24,12 @@ public class TenantClearTest extends AppTest {
 	@Test
 	public void add() {
 		// 有租户查询
-		demoService.list();
+		demoService.getAllByTenantClear();
 		// 无租户查询
-		demoService.listAll();
+		demoService.getAllByTenantClear();
 		// globalFlag:true ->  无租户标志查询
 		// globalFlag:false -> 有租户标志查询
-		demoService.list();
+		demoService.getAllByTenantClear();
 	}
 
 }

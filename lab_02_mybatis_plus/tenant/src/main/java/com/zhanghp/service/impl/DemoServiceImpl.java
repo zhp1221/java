@@ -18,7 +18,6 @@ import java.util.List;
  * @since 2023-11-20
  */
 @Service
- @TenantClear(globalFlag = false)
 public class DemoServiceImpl extends ServiceImpl<DemoMapper, Demo> implements DemoService {
 
 	@Override
@@ -27,7 +26,13 @@ public class DemoServiceImpl extends ServiceImpl<DemoMapper, Demo> implements De
 	}
 
 	@Override
-	public List<Demo> listAll() {
+	public List<Demo> getAll() {
+		return super.list();
+	}
+
+	@Override
+	@TenantClear(globalFlag = false)
+	public List<Demo> getAllByTenantClear() {
 		return super.list();
 	}
 
